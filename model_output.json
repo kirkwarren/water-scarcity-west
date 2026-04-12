@@ -1,0 +1,1409 @@
+{
+  "metadata": {
+    "model": "Western US Drought Probability Model v1.0",
+    "based_on": [
+      "Williams et al. 2022, Nature Climate Change (megadrought attribution)",
+      "Cook et al. 2015, Science Advances (21st century drought risk)",
+      "Ault et al. 2016, Journal of Climate (megadrought probability)",
+      "Udall & Overpeck 2017, Water Resources Research (flow sensitivity)",
+      "CMIP6 multi-model ensemble projections"
+    ],
+    "disclaimer": "Simplified model for scenario planning. Not a substitute for CMIP6 ensemble analysis."
+  },
+  "colorado_river_projections": {
+    "SSP2-4.5": [
+      {
+        "year": 2025,
+        "projected_flow_MAF": 12.77,
+        "supply_demand_gap_MAF": 5.53,
+        "gap_pct_of_allocation": 30.2
+      },
+      {
+        "year": 2026,
+        "projected_flow_MAF": 12.77,
+        "supply_demand_gap_MAF": 5.55,
+        "gap_pct_of_allocation": 30.3
+      },
+      {
+        "year": 2027,
+        "projected_flow_MAF": 12.77,
+        "supply_demand_gap_MAF": 5.57,
+        "gap_pct_of_allocation": 30.4
+      },
+      {
+        "year": 2028,
+        "projected_flow_MAF": 12.77,
+        "supply_demand_gap_MAF": 5.58,
+        "gap_pct_of_allocation": 30.5
+      },
+      {
+        "year": 2029,
+        "projected_flow_MAF": 12.77,
+        "supply_demand_gap_MAF": 5.6,
+        "gap_pct_of_allocation": 30.6
+      },
+      {
+        "year": 2030,
+        "projected_flow_MAF": 12.77,
+        "supply_demand_gap_MAF": 5.62,
+        "gap_pct_of_allocation": 30.7
+      },
+      {
+        "year": 2031,
+        "projected_flow_MAF": 12.73,
+        "supply_demand_gap_MAF": 5.68,
+        "gap_pct_of_allocation": 31.0
+      },
+      {
+        "year": 2032,
+        "projected_flow_MAF": 12.69,
+        "supply_demand_gap_MAF": 5.74,
+        "gap_pct_of_allocation": 31.4
+      },
+      {
+        "year": 2033,
+        "projected_flow_MAF": 12.64,
+        "supply_demand_gap_MAF": 5.8,
+        "gap_pct_of_allocation": 31.7
+      },
+      {
+        "year": 2034,
+        "projected_flow_MAF": 12.6,
+        "supply_demand_gap_MAF": 5.87,
+        "gap_pct_of_allocation": 32.1
+      },
+      {
+        "year": 2035,
+        "projected_flow_MAF": 12.56,
+        "supply_demand_gap_MAF": 5.93,
+        "gap_pct_of_allocation": 32.4
+      },
+      {
+        "year": 2036,
+        "projected_flow_MAF": 12.51,
+        "supply_demand_gap_MAF": 5.99,
+        "gap_pct_of_allocation": 32.7
+      },
+      {
+        "year": 2037,
+        "projected_flow_MAF": 12.47,
+        "supply_demand_gap_MAF": 6.05,
+        "gap_pct_of_allocation": 33.1
+      },
+      {
+        "year": 2038,
+        "projected_flow_MAF": 12.43,
+        "supply_demand_gap_MAF": 6.11,
+        "gap_pct_of_allocation": 33.4
+      },
+      {
+        "year": 2039,
+        "projected_flow_MAF": 12.38,
+        "supply_demand_gap_MAF": 6.17,
+        "gap_pct_of_allocation": 33.7
+      },
+      {
+        "year": 2040,
+        "projected_flow_MAF": 12.34,
+        "supply_demand_gap_MAF": 6.23,
+        "gap_pct_of_allocation": 34.1
+      },
+      {
+        "year": 2041,
+        "projected_flow_MAF": 12.31,
+        "supply_demand_gap_MAF": 6.29,
+        "gap_pct_of_allocation": 34.3
+      },
+      {
+        "year": 2042,
+        "projected_flow_MAF": 12.27,
+        "supply_demand_gap_MAF": 6.34,
+        "gap_pct_of_allocation": 34.6
+      },
+      {
+        "year": 2043,
+        "projected_flow_MAF": 12.24,
+        "supply_demand_gap_MAF": 6.39,
+        "gap_pct_of_allocation": 34.9
+      },
+      {
+        "year": 2044,
+        "projected_flow_MAF": 12.2,
+        "supply_demand_gap_MAF": 6.44,
+        "gap_pct_of_allocation": 35.2
+      },
+      {
+        "year": 2045,
+        "projected_flow_MAF": 12.17,
+        "supply_demand_gap_MAF": 6.5,
+        "gap_pct_of_allocation": 35.5
+      },
+      {
+        "year": 2046,
+        "projected_flow_MAF": 12.14,
+        "supply_demand_gap_MAF": 6.55,
+        "gap_pct_of_allocation": 35.8
+      },
+      {
+        "year": 2047,
+        "projected_flow_MAF": 12.1,
+        "supply_demand_gap_MAF": 6.6,
+        "gap_pct_of_allocation": 36.1
+      },
+      {
+        "year": 2048,
+        "projected_flow_MAF": 12.07,
+        "supply_demand_gap_MAF": 6.65,
+        "gap_pct_of_allocation": 36.4
+      },
+      {
+        "year": 2049,
+        "projected_flow_MAF": 12.03,
+        "supply_demand_gap_MAF": 6.71,
+        "gap_pct_of_allocation": 36.6
+      },
+      {
+        "year": 2050,
+        "projected_flow_MAF": 12.0,
+        "supply_demand_gap_MAF": 6.76,
+        "gap_pct_of_allocation": 36.9
+      },
+      {
+        "year": 2051,
+        "projected_flow_MAF": 11.97,
+        "supply_demand_gap_MAF": 6.8,
+        "gap_pct_of_allocation": 37.2
+      },
+      {
+        "year": 2052,
+        "projected_flow_MAF": 11.95,
+        "supply_demand_gap_MAF": 6.85,
+        "gap_pct_of_allocation": 37.4
+      },
+      {
+        "year": 2053,
+        "projected_flow_MAF": 11.92,
+        "supply_demand_gap_MAF": 6.89,
+        "gap_pct_of_allocation": 37.7
+      },
+      {
+        "year": 2054,
+        "projected_flow_MAF": 11.9,
+        "supply_demand_gap_MAF": 6.93,
+        "gap_pct_of_allocation": 37.9
+      },
+      {
+        "year": 2055,
+        "projected_flow_MAF": 11.87,
+        "supply_demand_gap_MAF": 6.98,
+        "gap_pct_of_allocation": 38.1
+      },
+      {
+        "year": 2056,
+        "projected_flow_MAF": 11.84,
+        "supply_demand_gap_MAF": 7.02,
+        "gap_pct_of_allocation": 38.4
+      },
+      {
+        "year": 2057,
+        "projected_flow_MAF": 11.82,
+        "supply_demand_gap_MAF": 7.07,
+        "gap_pct_of_allocation": 38.6
+      },
+      {
+        "year": 2058,
+        "projected_flow_MAF": 11.79,
+        "supply_demand_gap_MAF": 7.11,
+        "gap_pct_of_allocation": 38.9
+      },
+      {
+        "year": 2059,
+        "projected_flow_MAF": 11.77,
+        "supply_demand_gap_MAF": 7.16,
+        "gap_pct_of_allocation": 39.1
+      },
+      {
+        "year": 2060,
+        "projected_flow_MAF": 11.74,
+        "supply_demand_gap_MAF": 7.2,
+        "gap_pct_of_allocation": 39.3
+      },
+      {
+        "year": 2061,
+        "projected_flow_MAF": 11.72,
+        "supply_demand_gap_MAF": 7.24,
+        "gap_pct_of_allocation": 39.6
+      },
+      {
+        "year": 2062,
+        "projected_flow_MAF": 11.69,
+        "supply_demand_gap_MAF": 7.29,
+        "gap_pct_of_allocation": 39.8
+      },
+      {
+        "year": 2063,
+        "projected_flow_MAF": 11.66,
+        "supply_demand_gap_MAF": 7.33,
+        "gap_pct_of_allocation": 40.1
+      },
+      {
+        "year": 2064,
+        "projected_flow_MAF": 11.64,
+        "supply_demand_gap_MAF": 7.38,
+        "gap_pct_of_allocation": 40.3
+      },
+      {
+        "year": 2065,
+        "projected_flow_MAF": 11.61,
+        "supply_demand_gap_MAF": 7.42,
+        "gap_pct_of_allocation": 40.5
+      },
+      {
+        "year": 2066,
+        "projected_flow_MAF": 11.59,
+        "supply_demand_gap_MAF": 7.46,
+        "gap_pct_of_allocation": 40.8
+      },
+      {
+        "year": 2067,
+        "projected_flow_MAF": 11.56,
+        "supply_demand_gap_MAF": 7.51,
+        "gap_pct_of_allocation": 41.0
+      },
+      {
+        "year": 2068,
+        "projected_flow_MAF": 11.54,
+        "supply_demand_gap_MAF": 7.55,
+        "gap_pct_of_allocation": 41.3
+      },
+      {
+        "year": 2069,
+        "projected_flow_MAF": 11.51,
+        "supply_demand_gap_MAF": 7.6,
+        "gap_pct_of_allocation": 41.5
+      },
+      {
+        "year": 2070,
+        "projected_flow_MAF": 11.48,
+        "supply_demand_gap_MAF": 7.64,
+        "gap_pct_of_allocation": 41.7
+      },
+      {
+        "year": 2071,
+        "projected_flow_MAF": 11.47,
+        "supply_demand_gap_MAF": 7.67,
+        "gap_pct_of_allocation": 41.9
+      },
+      {
+        "year": 2072,
+        "projected_flow_MAF": 11.45,
+        "supply_demand_gap_MAF": 7.71,
+        "gap_pct_of_allocation": 42.1
+      },
+      {
+        "year": 2073,
+        "projected_flow_MAF": 11.43,
+        "supply_demand_gap_MAF": 7.75,
+        "gap_pct_of_allocation": 42.3
+      },
+      {
+        "year": 2074,
+        "projected_flow_MAF": 11.42,
+        "supply_demand_gap_MAF": 7.78,
+        "gap_pct_of_allocation": 42.5
+      },
+      {
+        "year": 2075,
+        "projected_flow_MAF": 11.4,
+        "supply_demand_gap_MAF": 7.82,
+        "gap_pct_of_allocation": 42.7
+      },
+      {
+        "year": 2076,
+        "projected_flow_MAF": 11.38,
+        "supply_demand_gap_MAF": 7.85,
+        "gap_pct_of_allocation": 42.9
+      },
+      {
+        "year": 2077,
+        "projected_flow_MAF": 11.36,
+        "supply_demand_gap_MAF": 7.89,
+        "gap_pct_of_allocation": 43.1
+      },
+      {
+        "year": 2078,
+        "projected_flow_MAF": 11.35,
+        "supply_demand_gap_MAF": 7.92,
+        "gap_pct_of_allocation": 43.3
+      },
+      {
+        "year": 2079,
+        "projected_flow_MAF": 11.33,
+        "supply_demand_gap_MAF": 7.96,
+        "gap_pct_of_allocation": 43.5
+      },
+      {
+        "year": 2080,
+        "projected_flow_MAF": 11.31,
+        "supply_demand_gap_MAF": 7.99,
+        "gap_pct_of_allocation": 43.7
+      },
+      {
+        "year": 2081,
+        "projected_flow_MAF": 11.3,
+        "supply_demand_gap_MAF": 8.02,
+        "gap_pct_of_allocation": 43.8
+      },
+      {
+        "year": 2082,
+        "projected_flow_MAF": 11.3,
+        "supply_demand_gap_MAF": 8.05,
+        "gap_pct_of_allocation": 44.0
+      },
+      {
+        "year": 2083,
+        "projected_flow_MAF": 11.29,
+        "supply_demand_gap_MAF": 8.07,
+        "gap_pct_of_allocation": 44.1
+      },
+      {
+        "year": 2084,
+        "projected_flow_MAF": 11.28,
+        "supply_demand_gap_MAF": 8.1,
+        "gap_pct_of_allocation": 44.3
+      },
+      {
+        "year": 2085,
+        "projected_flow_MAF": 11.27,
+        "supply_demand_gap_MAF": 8.13,
+        "gap_pct_of_allocation": 44.4
+      },
+      {
+        "year": 2086,
+        "projected_flow_MAF": 11.26,
+        "supply_demand_gap_MAF": 8.16,
+        "gap_pct_of_allocation": 44.6
+      },
+      {
+        "year": 2087,
+        "projected_flow_MAF": 11.25,
+        "supply_demand_gap_MAF": 8.18,
+        "gap_pct_of_allocation": 44.7
+      },
+      {
+        "year": 2088,
+        "projected_flow_MAF": 11.24,
+        "supply_demand_gap_MAF": 8.21,
+        "gap_pct_of_allocation": 44.9
+      },
+      {
+        "year": 2089,
+        "projected_flow_MAF": 11.24,
+        "supply_demand_gap_MAF": 8.24,
+        "gap_pct_of_allocation": 45.0
+      },
+      {
+        "year": 2090,
+        "projected_flow_MAF": 11.23,
+        "supply_demand_gap_MAF": 8.26,
+        "gap_pct_of_allocation": 45.2
+      },
+      {
+        "year": 2091,
+        "projected_flow_MAF": 11.22,
+        "supply_demand_gap_MAF": 8.29,
+        "gap_pct_of_allocation": 45.3
+      },
+      {
+        "year": 2092,
+        "projected_flow_MAF": 11.21,
+        "supply_demand_gap_MAF": 8.32,
+        "gap_pct_of_allocation": 45.4
+      },
+      {
+        "year": 2093,
+        "projected_flow_MAF": 11.2,
+        "supply_demand_gap_MAF": 8.34,
+        "gap_pct_of_allocation": 45.6
+      },
+      {
+        "year": 2094,
+        "projected_flow_MAF": 11.19,
+        "supply_demand_gap_MAF": 8.37,
+        "gap_pct_of_allocation": 45.7
+      },
+      {
+        "year": 2095,
+        "projected_flow_MAF": 11.18,
+        "supply_demand_gap_MAF": 8.4,
+        "gap_pct_of_allocation": 45.9
+      },
+      {
+        "year": 2096,
+        "projected_flow_MAF": 11.18,
+        "supply_demand_gap_MAF": 8.42,
+        "gap_pct_of_allocation": 46.0
+      },
+      {
+        "year": 2097,
+        "projected_flow_MAF": 11.17,
+        "supply_demand_gap_MAF": 8.45,
+        "gap_pct_of_allocation": 46.2
+      },
+      {
+        "year": 2098,
+        "projected_flow_MAF": 11.16,
+        "supply_demand_gap_MAF": 8.48,
+        "gap_pct_of_allocation": 46.3
+      },
+      {
+        "year": 2099,
+        "projected_flow_MAF": 11.15,
+        "supply_demand_gap_MAF": 8.5,
+        "gap_pct_of_allocation": 46.5
+      },
+      {
+        "year": 2100,
+        "projected_flow_MAF": 11.14,
+        "supply_demand_gap_MAF": 8.53,
+        "gap_pct_of_allocation": 46.6
+      },
+      {
+        "year": 2101,
+        "projected_flow_MAF": 11.13,
+        "supply_demand_gap_MAF": 8.56,
+        "gap_pct_of_allocation": 46.8
+      },
+      {
+        "year": 2102,
+        "projected_flow_MAF": 11.12,
+        "supply_demand_gap_MAF": 8.59,
+        "gap_pct_of_allocation": 46.9
+      },
+      {
+        "year": 2103,
+        "projected_flow_MAF": 11.12,
+        "supply_demand_gap_MAF": 8.61,
+        "gap_pct_of_allocation": 47.1
+      },
+      {
+        "year": 2104,
+        "projected_flow_MAF": 11.11,
+        "supply_demand_gap_MAF": 8.64,
+        "gap_pct_of_allocation": 47.2
+      },
+      {
+        "year": 2105,
+        "projected_flow_MAF": 11.1,
+        "supply_demand_gap_MAF": 8.67,
+        "gap_pct_of_allocation": 47.4
+      },
+      {
+        "year": 2106,
+        "projected_flow_MAF": 11.09,
+        "supply_demand_gap_MAF": 8.69,
+        "gap_pct_of_allocation": 47.5
+      },
+      {
+        "year": 2107,
+        "projected_flow_MAF": 11.08,
+        "supply_demand_gap_MAF": 8.72,
+        "gap_pct_of_allocation": 47.6
+      },
+      {
+        "year": 2108,
+        "projected_flow_MAF": 11.07,
+        "supply_demand_gap_MAF": 8.75,
+        "gap_pct_of_allocation": 47.8
+      },
+      {
+        "year": 2109,
+        "projected_flow_MAF": 11.06,
+        "supply_demand_gap_MAF": 8.77,
+        "gap_pct_of_allocation": 47.9
+      },
+      {
+        "year": 2110,
+        "projected_flow_MAF": 11.05,
+        "supply_demand_gap_MAF": 8.8,
+        "gap_pct_of_allocation": 48.1
+      },
+      {
+        "year": 2111,
+        "projected_flow_MAF": 11.05,
+        "supply_demand_gap_MAF": 8.82,
+        "gap_pct_of_allocation": 48.2
+      },
+      {
+        "year": 2112,
+        "projected_flow_MAF": 11.05,
+        "supply_demand_gap_MAF": 8.84,
+        "gap_pct_of_allocation": 48.3
+      },
+      {
+        "year": 2113,
+        "projected_flow_MAF": 11.05,
+        "supply_demand_gap_MAF": 8.86,
+        "gap_pct_of_allocation": 48.4
+      },
+      {
+        "year": 2114,
+        "projected_flow_MAF": 11.05,
+        "supply_demand_gap_MAF": 8.87,
+        "gap_pct_of_allocation": 48.5
+      },
+      {
+        "year": 2115,
+        "projected_flow_MAF": 11.05,
+        "supply_demand_gap_MAF": 8.89,
+        "gap_pct_of_allocation": 48.6
+      },
+      {
+        "year": 2116,
+        "projected_flow_MAF": 11.05,
+        "supply_demand_gap_MAF": 8.91,
+        "gap_pct_of_allocation": 48.7
+      },
+      {
+        "year": 2117,
+        "projected_flow_MAF": 11.05,
+        "supply_demand_gap_MAF": 8.93,
+        "gap_pct_of_allocation": 48.8
+      },
+      {
+        "year": 2118,
+        "projected_flow_MAF": 11.05,
+        "supply_demand_gap_MAF": 8.95,
+        "gap_pct_of_allocation": 48.9
+      },
+      {
+        "year": 2119,
+        "projected_flow_MAF": 11.05,
+        "supply_demand_gap_MAF": 8.97,
+        "gap_pct_of_allocation": 49.0
+      },
+      {
+        "year": 2120,
+        "projected_flow_MAF": 11.05,
+        "supply_demand_gap_MAF": 8.98,
+        "gap_pct_of_allocation": 49.1
+      },
+      {
+        "year": 2121,
+        "projected_flow_MAF": 11.05,
+        "supply_demand_gap_MAF": 9.0,
+        "gap_pct_of_allocation": 49.2
+      },
+      {
+        "year": 2122,
+        "projected_flow_MAF": 11.05,
+        "supply_demand_gap_MAF": 9.02,
+        "gap_pct_of_allocation": 49.3
+      },
+      {
+        "year": 2123,
+        "projected_flow_MAF": 11.05,
+        "supply_demand_gap_MAF": 9.04,
+        "gap_pct_of_allocation": 49.4
+      },
+      {
+        "year": 2124,
+        "projected_flow_MAF": 11.05,
+        "supply_demand_gap_MAF": 9.06,
+        "gap_pct_of_allocation": 49.5
+      },
+      {
+        "year": 2125,
+        "projected_flow_MAF": 11.05,
+        "supply_demand_gap_MAF": 9.08,
+        "gap_pct_of_allocation": 49.6
+      }
+    ],
+    "SSP5-8.5": [
+      {
+        "year": 2025,
+        "projected_flow_MAF": 12.69,
+        "supply_demand_gap_MAF": 5.61,
+        "gap_pct_of_allocation": 30.7
+      },
+      {
+        "year": 2026,
+        "projected_flow_MAF": 12.69,
+        "supply_demand_gap_MAF": 5.63,
+        "gap_pct_of_allocation": 30.8
+      },
+      {
+        "year": 2027,
+        "projected_flow_MAF": 12.69,
+        "supply_demand_gap_MAF": 5.65,
+        "gap_pct_of_allocation": 30.9
+      },
+      {
+        "year": 2028,
+        "projected_flow_MAF": 12.69,
+        "supply_demand_gap_MAF": 5.67,
+        "gap_pct_of_allocation": 31.0
+      },
+      {
+        "year": 2029,
+        "projected_flow_MAF": 12.69,
+        "supply_demand_gap_MAF": 5.69,
+        "gap_pct_of_allocation": 31.1
+      },
+      {
+        "year": 2030,
+        "projected_flow_MAF": 12.69,
+        "supply_demand_gap_MAF": 5.71,
+        "gap_pct_of_allocation": 31.2
+      },
+      {
+        "year": 2031,
+        "projected_flow_MAF": 12.63,
+        "supply_demand_gap_MAF": 5.78,
+        "gap_pct_of_allocation": 31.6
+      },
+      {
+        "year": 2032,
+        "projected_flow_MAF": 12.58,
+        "supply_demand_gap_MAF": 5.85,
+        "gap_pct_of_allocation": 31.9
+      },
+      {
+        "year": 2033,
+        "projected_flow_MAF": 12.53,
+        "supply_demand_gap_MAF": 5.92,
+        "gap_pct_of_allocation": 32.3
+      },
+      {
+        "year": 2034,
+        "projected_flow_MAF": 12.48,
+        "supply_demand_gap_MAF": 5.99,
+        "gap_pct_of_allocation": 32.7
+      },
+      {
+        "year": 2035,
+        "projected_flow_MAF": 12.43,
+        "supply_demand_gap_MAF": 6.06,
+        "gap_pct_of_allocation": 33.1
+      },
+      {
+        "year": 2036,
+        "projected_flow_MAF": 12.38,
+        "supply_demand_gap_MAF": 6.12,
+        "gap_pct_of_allocation": 33.5
+      },
+      {
+        "year": 2037,
+        "projected_flow_MAF": 12.32,
+        "supply_demand_gap_MAF": 6.19,
+        "gap_pct_of_allocation": 33.9
+      },
+      {
+        "year": 2038,
+        "projected_flow_MAF": 12.27,
+        "supply_demand_gap_MAF": 6.26,
+        "gap_pct_of_allocation": 34.2
+      },
+      {
+        "year": 2039,
+        "projected_flow_MAF": 12.22,
+        "supply_demand_gap_MAF": 6.33,
+        "gap_pct_of_allocation": 34.6
+      },
+      {
+        "year": 2040,
+        "projected_flow_MAF": 12.17,
+        "supply_demand_gap_MAF": 6.4,
+        "gap_pct_of_allocation": 35.0
+      },
+      {
+        "year": 2041,
+        "projected_flow_MAF": 12.11,
+        "supply_demand_gap_MAF": 6.48,
+        "gap_pct_of_allocation": 35.4
+      },
+      {
+        "year": 2042,
+        "projected_flow_MAF": 12.05,
+        "supply_demand_gap_MAF": 6.56,
+        "gap_pct_of_allocation": 35.9
+      },
+      {
+        "year": 2043,
+        "projected_flow_MAF": 11.99,
+        "supply_demand_gap_MAF": 6.64,
+        "gap_pct_of_allocation": 36.3
+      },
+      {
+        "year": 2044,
+        "projected_flow_MAF": 11.93,
+        "supply_demand_gap_MAF": 6.72,
+        "gap_pct_of_allocation": 36.7
+      },
+      {
+        "year": 2045,
+        "projected_flow_MAF": 11.87,
+        "supply_demand_gap_MAF": 6.8,
+        "gap_pct_of_allocation": 37.1
+      },
+      {
+        "year": 2046,
+        "projected_flow_MAF": 11.81,
+        "supply_demand_gap_MAF": 6.87,
+        "gap_pct_of_allocation": 37.6
+      },
+      {
+        "year": 2047,
+        "projected_flow_MAF": 11.75,
+        "supply_demand_gap_MAF": 6.95,
+        "gap_pct_of_allocation": 38.0
+      },
+      {
+        "year": 2048,
+        "projected_flow_MAF": 11.69,
+        "supply_demand_gap_MAF": 7.03,
+        "gap_pct_of_allocation": 38.4
+      },
+      {
+        "year": 2049,
+        "projected_flow_MAF": 11.63,
+        "supply_demand_gap_MAF": 7.11,
+        "gap_pct_of_allocation": 38.8
+      },
+      {
+        "year": 2050,
+        "projected_flow_MAF": 11.57,
+        "supply_demand_gap_MAF": 7.19,
+        "gap_pct_of_allocation": 39.3
+      },
+      {
+        "year": 2051,
+        "projected_flow_MAF": 11.5,
+        "supply_demand_gap_MAF": 7.27,
+        "gap_pct_of_allocation": 39.8
+      },
+      {
+        "year": 2052,
+        "projected_flow_MAF": 11.43,
+        "supply_demand_gap_MAF": 7.36,
+        "gap_pct_of_allocation": 40.2
+      },
+      {
+        "year": 2053,
+        "projected_flow_MAF": 11.36,
+        "supply_demand_gap_MAF": 7.45,
+        "gap_pct_of_allocation": 40.7
+      },
+      {
+        "year": 2054,
+        "projected_flow_MAF": 11.3,
+        "supply_demand_gap_MAF": 7.54,
+        "gap_pct_of_allocation": 41.2
+      },
+      {
+        "year": 2055,
+        "projected_flow_MAF": 11.23,
+        "supply_demand_gap_MAF": 7.62,
+        "gap_pct_of_allocation": 41.7
+      },
+      {
+        "year": 2056,
+        "projected_flow_MAF": 11.16,
+        "supply_demand_gap_MAF": 7.71,
+        "gap_pct_of_allocation": 42.1
+      },
+      {
+        "year": 2057,
+        "projected_flow_MAF": 11.09,
+        "supply_demand_gap_MAF": 7.8,
+        "gap_pct_of_allocation": 42.6
+      },
+      {
+        "year": 2058,
+        "projected_flow_MAF": 11.02,
+        "supply_demand_gap_MAF": 7.88,
+        "gap_pct_of_allocation": 43.1
+      },
+      {
+        "year": 2059,
+        "projected_flow_MAF": 10.95,
+        "supply_demand_gap_MAF": 7.97,
+        "gap_pct_of_allocation": 43.6
+      },
+      {
+        "year": 2060,
+        "projected_flow_MAF": 10.88,
+        "supply_demand_gap_MAF": 8.06,
+        "gap_pct_of_allocation": 44.0
+      },
+      {
+        "year": 2061,
+        "projected_flow_MAF": 10.82,
+        "supply_demand_gap_MAF": 8.14,
+        "gap_pct_of_allocation": 44.5
+      },
+      {
+        "year": 2062,
+        "projected_flow_MAF": 10.76,
+        "supply_demand_gap_MAF": 8.21,
+        "gap_pct_of_allocation": 44.9
+      },
+      {
+        "year": 2063,
+        "projected_flow_MAF": 10.7,
+        "supply_demand_gap_MAF": 8.29,
+        "gap_pct_of_allocation": 45.3
+      },
+      {
+        "year": 2064,
+        "projected_flow_MAF": 10.64,
+        "supply_demand_gap_MAF": 8.37,
+        "gap_pct_of_allocation": 45.7
+      },
+      {
+        "year": 2065,
+        "projected_flow_MAF": 10.58,
+        "supply_demand_gap_MAF": 8.45,
+        "gap_pct_of_allocation": 46.2
+      },
+      {
+        "year": 2066,
+        "projected_flow_MAF": 10.52,
+        "supply_demand_gap_MAF": 8.53,
+        "gap_pct_of_allocation": 46.6
+      },
+      {
+        "year": 2067,
+        "projected_flow_MAF": 10.46,
+        "supply_demand_gap_MAF": 8.61,
+        "gap_pct_of_allocation": 47.0
+      },
+      {
+        "year": 2068,
+        "projected_flow_MAF": 10.4,
+        "supply_demand_gap_MAF": 8.68,
+        "gap_pct_of_allocation": 47.5
+      },
+      {
+        "year": 2069,
+        "projected_flow_MAF": 10.34,
+        "supply_demand_gap_MAF": 8.76,
+        "gap_pct_of_allocation": 47.9
+      },
+      {
+        "year": 2070,
+        "projected_flow_MAF": 10.28,
+        "supply_demand_gap_MAF": 8.84,
+        "gap_pct_of_allocation": 48.3
+      },
+      {
+        "year": 2071,
+        "projected_flow_MAF": 10.23,
+        "supply_demand_gap_MAF": 8.91,
+        "gap_pct_of_allocation": 48.7
+      },
+      {
+        "year": 2072,
+        "projected_flow_MAF": 10.18,
+        "supply_demand_gap_MAF": 8.98,
+        "gap_pct_of_allocation": 49.1
+      },
+      {
+        "year": 2073,
+        "projected_flow_MAF": 10.13,
+        "supply_demand_gap_MAF": 9.05,
+        "gap_pct_of_allocation": 49.5
+      },
+      {
+        "year": 2074,
+        "projected_flow_MAF": 10.08,
+        "supply_demand_gap_MAF": 9.12,
+        "gap_pct_of_allocation": 49.8
+      },
+      {
+        "year": 2075,
+        "projected_flow_MAF": 10.03,
+        "supply_demand_gap_MAF": 9.19,
+        "gap_pct_of_allocation": 50.2
+      },
+      {
+        "year": 2076,
+        "projected_flow_MAF": 9.97,
+        "supply_demand_gap_MAF": 9.26,
+        "gap_pct_of_allocation": 50.6
+      },
+      {
+        "year": 2077,
+        "projected_flow_MAF": 9.92,
+        "supply_demand_gap_MAF": 9.33,
+        "gap_pct_of_allocation": 51.0
+      },
+      {
+        "year": 2078,
+        "projected_flow_MAF": 9.87,
+        "supply_demand_gap_MAF": 9.4,
+        "gap_pct_of_allocation": 51.4
+      },
+      {
+        "year": 2079,
+        "projected_flow_MAF": 9.82,
+        "supply_demand_gap_MAF": 9.47,
+        "gap_pct_of_allocation": 51.7
+      },
+      {
+        "year": 2080,
+        "projected_flow_MAF": 9.77,
+        "supply_demand_gap_MAF": 9.54,
+        "gap_pct_of_allocation": 52.1
+      },
+      {
+        "year": 2081,
+        "projected_flow_MAF": 9.73,
+        "supply_demand_gap_MAF": 9.6,
+        "gap_pct_of_allocation": 52.5
+      },
+      {
+        "year": 2082,
+        "projected_flow_MAF": 9.68,
+        "supply_demand_gap_MAF": 9.66,
+        "gap_pct_of_allocation": 52.8
+      },
+      {
+        "year": 2083,
+        "projected_flow_MAF": 9.64,
+        "supply_demand_gap_MAF": 9.72,
+        "gap_pct_of_allocation": 53.1
+      },
+      {
+        "year": 2084,
+        "projected_flow_MAF": 9.6,
+        "supply_demand_gap_MAF": 9.78,
+        "gap_pct_of_allocation": 53.5
+      },
+      {
+        "year": 2085,
+        "projected_flow_MAF": 9.55,
+        "supply_demand_gap_MAF": 9.84,
+        "gap_pct_of_allocation": 53.8
+      },
+      {
+        "year": 2086,
+        "projected_flow_MAF": 9.51,
+        "supply_demand_gap_MAF": 9.91,
+        "gap_pct_of_allocation": 54.1
+      },
+      {
+        "year": 2087,
+        "projected_flow_MAF": 9.47,
+        "supply_demand_gap_MAF": 9.97,
+        "gap_pct_of_allocation": 54.5
+      },
+      {
+        "year": 2088,
+        "projected_flow_MAF": 9.42,
+        "supply_demand_gap_MAF": 10.03,
+        "gap_pct_of_allocation": 54.8
+      },
+      {
+        "year": 2089,
+        "projected_flow_MAF": 9.38,
+        "supply_demand_gap_MAF": 10.09,
+        "gap_pct_of_allocation": 55.1
+      },
+      {
+        "year": 2090,
+        "projected_flow_MAF": 9.34,
+        "supply_demand_gap_MAF": 10.15,
+        "gap_pct_of_allocation": 55.5
+      },
+      {
+        "year": 2091,
+        "projected_flow_MAF": 9.3,
+        "supply_demand_gap_MAF": 10.21,
+        "gap_pct_of_allocation": 55.8
+      },
+      {
+        "year": 2092,
+        "projected_flow_MAF": 9.25,
+        "supply_demand_gap_MAF": 10.27,
+        "gap_pct_of_allocation": 56.1
+      },
+      {
+        "year": 2093,
+        "projected_flow_MAF": 9.21,
+        "supply_demand_gap_MAF": 10.33,
+        "gap_pct_of_allocation": 56.5
+      },
+      {
+        "year": 2094,
+        "projected_flow_MAF": 9.17,
+        "supply_demand_gap_MAF": 10.4,
+        "gap_pct_of_allocation": 56.8
+      },
+      {
+        "year": 2095,
+        "projected_flow_MAF": 9.12,
+        "supply_demand_gap_MAF": 10.46,
+        "gap_pct_of_allocation": 57.1
+      },
+      {
+        "year": 2096,
+        "projected_flow_MAF": 9.08,
+        "supply_demand_gap_MAF": 10.52,
+        "gap_pct_of_allocation": 57.5
+      },
+      {
+        "year": 2097,
+        "projected_flow_MAF": 9.04,
+        "supply_demand_gap_MAF": 10.58,
+        "gap_pct_of_allocation": 57.8
+      },
+      {
+        "year": 2098,
+        "projected_flow_MAF": 9.0,
+        "supply_demand_gap_MAF": 10.64,
+        "gap_pct_of_allocation": 58.1
+      },
+      {
+        "year": 2099,
+        "projected_flow_MAF": 8.95,
+        "supply_demand_gap_MAF": 10.7,
+        "gap_pct_of_allocation": 58.5
+      },
+      {
+        "year": 2100,
+        "projected_flow_MAF": 8.91,
+        "supply_demand_gap_MAF": 10.76,
+        "gap_pct_of_allocation": 58.8
+      },
+      {
+        "year": 2101,
+        "projected_flow_MAF": 8.88,
+        "supply_demand_gap_MAF": 10.81,
+        "gap_pct_of_allocation": 59.1
+      },
+      {
+        "year": 2102,
+        "projected_flow_MAF": 8.86,
+        "supply_demand_gap_MAF": 10.85,
+        "gap_pct_of_allocation": 59.3
+      },
+      {
+        "year": 2103,
+        "projected_flow_MAF": 8.83,
+        "supply_demand_gap_MAF": 10.89,
+        "gap_pct_of_allocation": 59.5
+      },
+      {
+        "year": 2104,
+        "projected_flow_MAF": 8.81,
+        "supply_demand_gap_MAF": 10.94,
+        "gap_pct_of_allocation": 59.8
+      },
+      {
+        "year": 2105,
+        "projected_flow_MAF": 8.78,
+        "supply_demand_gap_MAF": 10.98,
+        "gap_pct_of_allocation": 60.0
+      },
+      {
+        "year": 2106,
+        "projected_flow_MAF": 8.76,
+        "supply_demand_gap_MAF": 11.03,
+        "gap_pct_of_allocation": 60.3
+      },
+      {
+        "year": 2107,
+        "projected_flow_MAF": 8.73,
+        "supply_demand_gap_MAF": 11.07,
+        "gap_pct_of_allocation": 60.5
+      },
+      {
+        "year": 2108,
+        "projected_flow_MAF": 8.7,
+        "supply_demand_gap_MAF": 11.11,
+        "gap_pct_of_allocation": 60.7
+      },
+      {
+        "year": 2109,
+        "projected_flow_MAF": 8.68,
+        "supply_demand_gap_MAF": 11.16,
+        "gap_pct_of_allocation": 61.0
+      },
+      {
+        "year": 2110,
+        "projected_flow_MAF": 8.65,
+        "supply_demand_gap_MAF": 11.2,
+        "gap_pct_of_allocation": 61.2
+      },
+      {
+        "year": 2111,
+        "projected_flow_MAF": 8.64,
+        "supply_demand_gap_MAF": 11.24,
+        "gap_pct_of_allocation": 61.4
+      },
+      {
+        "year": 2112,
+        "projected_flow_MAF": 8.62,
+        "supply_demand_gap_MAF": 11.27,
+        "gap_pct_of_allocation": 61.6
+      },
+      {
+        "year": 2113,
+        "projected_flow_MAF": 8.6,
+        "supply_demand_gap_MAF": 11.31,
+        "gap_pct_of_allocation": 61.8
+      },
+      {
+        "year": 2114,
+        "projected_flow_MAF": 8.58,
+        "supply_demand_gap_MAF": 11.34,
+        "gap_pct_of_allocation": 62.0
+      },
+      {
+        "year": 2115,
+        "projected_flow_MAF": 8.57,
+        "supply_demand_gap_MAF": 11.38,
+        "gap_pct_of_allocation": 62.2
+      },
+      {
+        "year": 2116,
+        "projected_flow_MAF": 8.55,
+        "supply_demand_gap_MAF": 11.42,
+        "gap_pct_of_allocation": 62.4
+      },
+      {
+        "year": 2117,
+        "projected_flow_MAF": 8.53,
+        "supply_demand_gap_MAF": 11.45,
+        "gap_pct_of_allocation": 62.6
+      },
+      {
+        "year": 2118,
+        "projected_flow_MAF": 8.52,
+        "supply_demand_gap_MAF": 11.49,
+        "gap_pct_of_allocation": 62.8
+      },
+      {
+        "year": 2119,
+        "projected_flow_MAF": 8.5,
+        "supply_demand_gap_MAF": 11.52,
+        "gap_pct_of_allocation": 63.0
+      },
+      {
+        "year": 2120,
+        "projected_flow_MAF": 8.48,
+        "supply_demand_gap_MAF": 11.56,
+        "gap_pct_of_allocation": 63.2
+      },
+      {
+        "year": 2121,
+        "projected_flow_MAF": 8.48,
+        "supply_demand_gap_MAF": 11.58,
+        "gap_pct_of_allocation": 63.3
+      },
+      {
+        "year": 2122,
+        "projected_flow_MAF": 8.48,
+        "supply_demand_gap_MAF": 11.59,
+        "gap_pct_of_allocation": 63.4
+      },
+      {
+        "year": 2123,
+        "projected_flow_MAF": 8.48,
+        "supply_demand_gap_MAF": 11.61,
+        "gap_pct_of_allocation": 63.5
+      },
+      {
+        "year": 2124,
+        "projected_flow_MAF": 8.48,
+        "supply_demand_gap_MAF": 11.63,
+        "gap_pct_of_allocation": 63.6
+      },
+      {
+        "year": 2125,
+        "projected_flow_MAF": 8.48,
+        "supply_demand_gap_MAF": 11.65,
+        "gap_pct_of_allocation": 63.7
+      }
+    ]
+  },
+  "drought_probabilities": {
+    "SSP2-4.5": {
+      "Next 10 years": {
+        "major_drought_probability": "29.0%",
+        "extreme_drought_probability": "15.6%",
+        "years": "2025-2035"
+      },
+      "Next 25 years": {
+        "major_drought_probability": "59.4%",
+        "extreme_drought_probability": "36.0%",
+        "years": "2025-2050"
+      },
+      "Next 50 years": {
+        "major_drought_probability": "86.5%",
+        "extreme_drought_probability": "62.8%",
+        "years": "2025-2075"
+      },
+      "Next 75 years": {
+        "major_drought_probability": "96.0%",
+        "extreme_drought_probability": "79.8%",
+        "years": "2025-2100"
+      },
+      "Next 100 years": {
+        "major_drought_probability": "98.9%",
+        "extreme_drought_probability": "89.2%",
+        "years": "2025-2125"
+      }
+    },
+    "SSP5-8.5": {
+      "Next 10 years": {
+        "major_drought_probability": "33.5%",
+        "extreme_drought_probability": "18.3%",
+        "years": "2025-2035"
+      },
+      "Next 25 years": {
+        "major_drought_probability": "68.2%",
+        "extreme_drought_probability": "43.2%",
+        "years": "2025-2050"
+      },
+      "Next 50 years": {
+        "major_drought_probability": "94.3%",
+        "extreme_drought_probability": "75.6%",
+        "years": "2025-2075"
+      },
+      "Next 75 years": {
+        "major_drought_probability": "99.3%",
+        "extreme_drought_probability": "91.3%",
+        "years": "2025-2100"
+      },
+      "Next 100 years": {
+        "major_drought_probability": "99.9%",
+        "extreme_drought_probability": "97.1%",
+        "years": "2025-2125"
+      }
+    }
+  },
+  "aquifer_depletion": {
+    "ogallala": {
+      "current_remaining_km3": 2980,
+      "current_depletion_rate_km3_yr": 11.0,
+      "timeline": [
+        {
+          "year": 2025,
+          "remaining_km3": 2969.0,
+          "pct_remaining": 99.6
+        },
+        {
+          "year": 2026,
+          "remaining_km3": 2958.0,
+          "pct_remaining": 99.3
+        },
+        {
+          "year": 2027,
+          "remaining_km3": 2946.9,
+          "pct_remaining": 98.9
+        },
+        {
+          "year": 2028,
+          "remaining_km3": 2935.9,
+          "pct_remaining": 98.5
+        },
+        {
+          "year": 2029,
+          "remaining_km3": 2924.8,
+          "pct_remaining": 98.1
+        },
+        {
+          "year": 2030,
+          "remaining_km3": 2913.7,
+          "pct_remaining": 97.8
+        },
+        {
+          "year": 2031,
+          "remaining_km3": 2902.5,
+          "pct_remaining": 97.4
+        },
+        {
+          "year": 2032,
+          "remaining_km3": 2891.4,
+          "pct_remaining": 97.0
+        },
+        {
+          "year": 2033,
+          "remaining_km3": 2880.2,
+          "pct_remaining": 96.7
+        },
+        {
+          "year": 2034,
+          "remaining_km3": 2869.0,
+          "pct_remaining": 96.3
+        },
+        {
+          "year": 2050,
+          "remaining_km3": 2686.9,
+          "pct_remaining": 90.2
+        },
+        {
+          "year": 2075,
+          "remaining_km3": 2391.0,
+          "pct_remaining": 80.2
+        },
+        {
+          "year": 2125,
+          "remaining_km3": 1757.9,
+          "pct_remaining": 59.0
+        }
+      ],
+      "functional_exhaustion_southern": "2050-2070 (southern High Plains at current rates)",
+      "note": "Northern Ogallala has higher recharge and will last longer"
+    }
+  },
+  "critical_thresholds": [
+    {
+      "threshold": "Colorado River deficit exceeds 5 MAF/year",
+      "scenario": "SSP2-4.5",
+      "year": 2025,
+      "implication": "Severe mandatory curtailments required across all basin states"
+    },
+    {
+      "threshold": "Colorado River deficit exceeds 5 MAF/year",
+      "scenario": "SSP5-8.5",
+      "year": 2025,
+      "implication": "Severe mandatory curtailments required across all basin states"
+    },
+    {
+      "threshold": "Colorado River flow drops below 10 MAF/year",
+      "scenario": "SSP5-8.5",
+      "year": 2076,
+      "implication": "Lake Powell and Lake Mead cannot maintain minimum power pool simultaneously"
+    },
+    {
+      "threshold": "We are ALREADY past the first critical threshold",
+      "scenario": "Current reality",
+      "year": 2025,
+      "implication": "Colorado River is overallocated by 4-6 MAF/year TODAY. The structural deficit exists NOW."
+    }
+  ],
+  "urgency_assessment": {
+    "verdict": "PLANNING IS ALREADY LATE, NOT EARLY",
+    "key_facts": [
+      "The Colorado River structural deficit (4-6 MAF/year) exists TODAY \u2014 not in 2050",
+      "2000-2021 was the worst drought in 1,200 years, and 42% was caused by warming that will only increase",
+      "Even under MODERATE emissions (SSP2-4.5), megadrought probability reaches 50% by 2100",
+      "Under current trajectory (SSP5-8.5), megadrought probability reaches 85% by 2100",
+      "The Ogallala Aquifer's southern section faces functional exhaustion by 2050-2070",
+      "Arizona, Nevada, Utah, Colorado are growing 30-60% by 2050 while their water supply shrinks",
+      "The 2026 Colorado River Compact renegotiation is the most critical water policy event in a generation",
+      "Every year of delayed infrastructure investment increases the cost and severity of future curtailments"
+    ],
+    "what_must_happen_now": [
+      "Managed Aquifer Recharge programs at Arizona Water Bank scale ($150-500/acre-foot) \u2014 proven, scalable",
+      "Mandatory water recycling for all cities over 100K population ($1,000-1,800/acre-foot)",
+      "Agricultural irrigation conversion: flood \u2192 drip with MANDATORY curtailment paired (prevents Jevons Paradox)",
+      "Realistic Colorado River Compact renegotiation accepting 12-13 MAF base flow, not the fictional 15+ MAF",
+      "Strategic desalination capacity for coastal cities ($1,800-2,500/acre-foot) as backup",
+      "Groundwater pumping regulations for ALL aquifers (not just California's SGMA zones)"
+    ]
+  }
+}

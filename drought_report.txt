@@ -1,0 +1,148 @@
+================================================================================
+WESTERN US DROUGHT RISK: 100-YEAR PREDICTIVE MODEL
+================================================================================
+
+SOURCES: Williams et al. 2022 (Nature Climate Change), Cook et al. 2015
+(Science Advances), Ault et al. 2016, Udall & Overpeck 2017, CMIP6 ensemble
+
+--------------------------------------------------------------------------------
+COLORADO RIVER FLOW PROJECTIONS (Mean Annual Flow, MAF/year)
+--------------------------------------------------------------------------------
+Year     SSP2-4.5 Flow    SSP2-4.5 Deficit   SSP5-8.5 Flow    SSP5-8.5 Deficit  
+         (MAF/yr)         (MAF/yr)           (MAF/yr)         (MAF/yr)          
+2025     12.77            5.53               12.69            5.61              
+2030     12.77            5.62               12.69            5.71              
+2035     12.56            5.93               12.43            6.06              
+2040     12.34            6.23               12.17            6.4               
+2045     12.17            6.5                11.87            6.8               
+2050     12.0             6.76               11.57            7.19              
+2055     11.87            6.98               11.23            7.62              
+2060     11.74            7.2                10.88            8.06              
+2065     11.61            7.42               10.58            8.45              
+2070     11.48            7.64               10.28            8.84              
+2075     11.4             7.82               10.03            9.19              
+2080     11.31            7.99               9.77             9.54              
+2085     11.27            8.13               9.55             9.84              
+2090     11.23            8.26               9.34             10.15             
+2095     11.18            8.4                9.12             10.46             
+2100     11.14            8.53               8.91             10.76             
+2105     11.1             8.67               8.78             10.98             
+2110     11.05            8.8                8.65             11.2              
+2115     11.05            8.89               8.57             11.38             
+2120     11.05            8.98               8.48             11.56             
+2125     11.05            9.08               8.48             11.65             
+
+Legal allocation total: 18.3 MAF/year
+Long-term natural flow:  13.2 MAF/year
+CURRENT DEFICIT:         6.0 MAF/year (already in crisis)
+
+--------------------------------------------------------------------------------
+CUMULATIVE DROUGHT PROBABILITIES
+--------------------------------------------------------------------------------
+
+  Scenario: SSP2-4.5
+    Next 10 years        Major: 29.0%    Extreme: 15.6%
+    Next 25 years        Major: 59.4%    Extreme: 36.0%
+    Next 50 years        Major: 86.5%    Extreme: 62.8%
+    Next 75 years        Major: 96.0%    Extreme: 79.8%
+    Next 100 years       Major: 98.9%    Extreme: 89.2%
+
+  Scenario: SSP5-8.5
+    Next 10 years        Major: 33.5%    Extreme: 18.3%
+    Next 25 years        Major: 68.2%    Extreme: 43.2%
+    Next 50 years        Major: 94.3%    Extreme: 75.6%
+    Next 75 years        Major: 99.3%    Extreme: 91.3%
+    Next 100 years       Major: 99.9%    Extreme: 97.1%
+
+--------------------------------------------------------------------------------
+CRITICAL THRESHOLDS
+--------------------------------------------------------------------------------
+
+  [SSP2-4.5] Colorado River deficit exceeds 5 MAF/year
+    Year: 2025
+    Impact: Severe mandatory curtailments required across all basin states
+
+  [SSP5-8.5] Colorado River deficit exceeds 5 MAF/year
+    Year: 2025
+    Impact: Severe mandatory curtailments required across all basin states
+
+  [SSP5-8.5] Colorado River flow drops below 10 MAF/year
+    Year: 2076
+    Impact: Lake Powell and Lake Mead cannot maintain minimum power pool simultaneously
+
+  [Current reality] We are ALREADY past the first critical threshold
+    Year: 2025
+    Impact: Colorado River is overallocated by 4-6 MAF/year TODAY. The structural deficit exists NOW.
+
+--------------------------------------------------------------------------------
+OGALLALA AQUIFER DEPLETION TIMELINE
+--------------------------------------------------------------------------------
+  2025: █████████████████████████████████████████████████░ 99.6%
+  2026: █████████████████████████████████████████████████░ 99.3%
+  2027: █████████████████████████████████████████████████░ 98.9%
+  2028: █████████████████████████████████████████████████░ 98.5%
+  2029: █████████████████████████████████████████████████░ 98.1%
+  2030: ████████████████████████████████████████████████░░ 97.8%
+  2031: ████████████████████████████████████████████████░░ 97.4%
+  2032: ████████████████████████████████████████████████░░ 97.0%
+  2033: ████████████████████████████████████████████████░░ 96.7%
+  2034: ████████████████████████████████████████████████░░ 96.3%
+  2050: █████████████████████████████████████████████░░░░░ 90.2%
+  2075: ████████████████████████████████████████░░░░░░░░░░ 80.2%
+  2125: █████████████████████████████░░░░░░░░░░░░░░░░░░░░░ 59.0%
+
+================================================================================
+VERDICT: PLANNING IS ALREADY LATE, NOT EARLY
+================================================================================
+  • The Colorado River structural deficit (4-6 MAF/year) exists TODAY — not in 2050
+  • 2000-2021 was the worst drought in 1,200 years, and 42% was caused by warming that will only increase
+  • Even under MODERATE emissions (SSP2-4.5), megadrought probability reaches 50% by 2100
+  • Under current trajectory (SSP5-8.5), megadrought probability reaches 85% by 2100
+  • The Ogallala Aquifer's southern section faces functional exhaustion by 2050-2070
+  • Arizona, Nevada, Utah, Colorado are growing 30-60% by 2050 while their water supply shrinks
+  • The 2026 Colorado River Compact renegotiation is the most critical water policy event in a generation
+  • Every year of delayed infrastructure investment increases the cost and severity of future curtailments
+
+--------------------------------------------------------------------------------
+RECOMMENDED ACTIONS (ranked by cost-effectiveness)
+--------------------------------------------------------------------------------
+  1. Managed Aquifer Recharge programs at Arizona Water Bank scale ($150-500/acre-foot) — proven, scalable
+  2. Mandatory water recycling for all cities over 100K population ($1,000-1,800/acre-foot)
+  3. Agricultural irrigation conversion: flood → drip with MANDATORY curtailment paired (prevents Jevons Paradox)
+  4. Realistic Colorado River Compact renegotiation accepting 12-13 MAF base flow, not the fictional 15+ MAF
+  5. Strategic desalination capacity for coastal cities ($1,800-2,500/acre-foot) as backup
+  6. Groundwater pumping regulations for ALL aquifers (not just California's SGMA zones)
+
+================================================================================
+WATER STORAGE TECHNOLOGY COMPARISON
+================================================================================
+  Technology                   Cost/AF          Scalability  Proven at Scale?
+  --------------------------   --------------   ----------   ----------------------------------------
+  Managed Aquifer Recharge     $150-500         Excellent    YES — Arizona Water Bank: 4M+ AF stored
+  Water Recycling (IPR)        $1,000-1,800     Excellent    YES — OC GWRS: 100 MGD, Singapore: 40% supply
+  Smart Irrigation + Policy    Varies           Excellent    YES — Israel: majority of irrigated land
+  Brackish Desalination        $500-1,200       Good         YES — multiple plants operational
+  Seawater Desalination        $1,800-2,500     Good         YES — Israel: 80% of domestic water
+  Stormwater Capture/MAR       $500-1,500       Moderate     EMERGING — LA master plan: 132K AF/yr target
+  Rainwater Harvesting         $3,000-8,000     Poor         YES but minimal volume in arid regions
+  Atmospheric Water Gen        $3,000-10K+      Very Poor    NO — pilot only, physics doesn't scale
+
+================================================================================
+OPTIMAL STORAGE STRATEGY FOR THE AMERICAN WEST
+================================================================================
+
+  TIER 1 — Do immediately (highest ROI, proven):
+    • Expand Managed Aquifer Recharge to every viable basin in AZ, NV, CA, CO, UT
+    • Mandate indirect potable reuse for all cities >100K population
+    • Convert remaining flood irrigation to drip WITH curtailment mandates
+
+  TIER 2 — Build within 10 years:
+    • Strategic seawater desalination for coastal CA cities (backup capacity)
+    • Comprehensive stormwater capture → aquifer recharge systems
+    • Interstate aquifer recharge banking agreements
+
+  TIER 3 — Policy (most impactful, hardest politically):
+    • Renegotiate Colorado River Compact to reality-based allocations (~12-13 MAF)
+    • Universal groundwater pumping regulation (end the Arizona/rural exemptions)
+    • Agricultural water markets allowing farmers to sell conserved water
+    • Tiered pricing that makes waste expensive, not just conservation voluntary
