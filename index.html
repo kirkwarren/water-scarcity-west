@@ -322,6 +322,91 @@
         .urgency-list li strong { display: block; margin-bottom: 2px; }
         .urgency-list li span { font-size: 0.85rem; color: var(--text-muted); }
 
+        /* Gap analysis */
+        .gap-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        @media (max-width: 640px) { .gap-grid { grid-template-columns: 1fr; } }
+
+        .gap-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .gap-card h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .gap-card .status-dot {
+            width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex-shrink: 0;
+        }
+
+        .gap-card .operating { background: var(--success); }
+        .gap-card .construction { background: var(--warning); }
+        .gap-card .planned { background: var(--accent); }
+
+        .gap-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 0;
+            font-size: 0.85rem;
+            border-bottom: 1px solid rgba(30,58,95,0.3);
+        }
+
+        .gap-item:last-child { border-bottom: none; }
+        .gap-item .name { color: var(--text-muted); }
+        .gap-item .vol { font-weight: 700; font-variant-numeric: tabular-nums; }
+        .gap-item .vol.green { color: var(--success); }
+        .gap-item .vol.amber { color: var(--warning); }
+        .gap-item .vol.blue { color: var(--accent); }
+
+        .gap-meter {
+            margin: 24px 0;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .meter-bar {
+            height: 40px;
+            background: var(--surface2);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            margin: 12px 0;
+        }
+
+        .meter-fill {
+            height: 100%;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: white;
+            transition: width 1.5s ease;
+        }
+
+        .meter-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
         /* Sources */
         .sources {
             padding: 48px 0;
@@ -467,6 +552,159 @@
         </div>
     </section>
 
+    <!-- GAP ANALYSIS: CURRENT EFFORTS VS NEED -->
+    <section>
+        <h2>What's Already Being Done &mdash; And Is It Enough?</h2>
+        <p class="section-sub">Active programs across the West are producing real results &mdash; California alone recharged 7.4M AF over 2022&ndash;2024. But the picture is deceptive: most recharge depends on wet years. During drought &mdash; when you need it most &mdash; the spigot runs dry. <strong>Drought-proof capacity covers only ~14% of the deficit.</strong></p>
+
+        <!-- Dual meters -->
+        <div class="gap-meter">
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
+                <span style="font-weight:700;">Best Case (Wet Year) Deficit Coverage</span>
+                <span style="font-size:0.85rem; color:var(--text-muted);">~2.1M AF/year vs. 6.0M AF/year deficit</span>
+            </div>
+            <div class="meter-bar">
+                <div class="meter-fill" style="width:35%; background: linear-gradient(90deg, var(--success), var(--warning));">35%</div>
+            </div>
+            <div class="meter-labels">
+                <span>0 MAF covered</span>
+                <span style="color:var(--danger); font-weight:600;">6.0 MAF/year deficit (today)</span>
+            </div>
+        </div>
+        <div class="gap-meter" style="margin-top:12px;">
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
+                <span style="font-weight:700;">Worst Case (Drought Year) Deficit Coverage</span>
+                <span style="font-size:0.85rem; color:var(--text-muted);">~845K AF/year vs. 6.0M AF/year deficit</span>
+            </div>
+            <div class="meter-bar">
+                <div class="meter-fill" style="width:14%; background: linear-gradient(90deg, var(--danger), #b91c1c);">14%</div>
+            </div>
+            <div class="meter-labels">
+                <span>0 MAF covered</span>
+                <span style="color:var(--danger); font-weight:600;">6.0 MAF/year deficit &mdash; and growing</span>
+            </div>
+            <div style="margin-top:16px; font-size:0.85rem; color:var(--text-muted);">
+                By 2100 under high emissions, the deficit grows to <strong style="color:var(--danger);">10.8 MAF/year</strong>. Even best-case wet-year efforts would cover just <strong style="color:var(--danger);">19%</strong>. The cruel irony: recharge programs that depend on surplus water produce nothing during the droughts they're meant to buffer against.
+            </div>
+        </div>
+
+        <div class="chart-wrap">
+            <div class="chart-title"><span class="dot" style="background:var(--success)"></span> Current Efforts vs. Projected Deficit Over Time</div>
+            <canvas id="gapAnalysisChart"></canvas>
+        </div>
+
+        <!-- Operating programs -->
+        <div class="gap-grid">
+            <div class="gap-card">
+                <h3><span class="status-dot operating"></span> Aquifer Recharge (Operating)</h3>
+                <div class="gap-item"><span class="name">Idaho ESPA recharge program</span><span class="vol green">350,000 AF/yr</span></div>
+                <div class="gap-item"><span class="name">CA managed recharge (2022&ndash;24 avg)</span><span class="vol" style="color:var(--warning);">2,500,000 AF/yr *</span></div>
+                <div class="gap-item"><span class="name">Inland Empire GW recharge</span><span class="vol green">55,000 AF/yr</span></div>
+                <div class="gap-item"><span class="name">Scottsdale Water Campus (MAR)</span><span class="vol green">12,000 AF/yr</span></div>
+                <div class="gap-item"><span class="name">Salt Lake County MAR (starting 2025)</span><span class="vol green">~10,500 AF/yr</span></div>
+                <div class="gap-item"><span class="name">Aurora Prairie Waters (CO)</span><span class="vol green">10,000 AF/yr</span></div>
+                <div class="gap-item"><span class="name">AZ Water Bank (banked reserves)</span><span class="vol" style="color:var(--cyan);">4.47M AF total</span></div>
+                <div class="gap-item" style="font-size:0.78rem; font-style:italic; color:var(--warning); padding:4px 0;">* CA figure includes natural recharge during 3 wet years. In drought years this drops to near zero. AWBA currently unable to bank &mdash; no excess CAP water under Tier 1 shortage.</div>
+                <div class="gap-item" style="border-top:1px solid var(--border); padding-top:10px; margin-top:4px;"><span class="name" style="color:var(--text); font-weight:700;">Drought-proof subtotal</span><span class="vol green">~438,000 AF/yr</span></div>
+            </div>
+
+            <div class="gap-card">
+                <h3><span class="status-dot operating"></span> Water Recycling &amp; Desal (Operating)</h3>
+                <div class="gap-item"><span class="name">SNWA return flow credits (Las Vegas)</span><span class="vol green">200,000 AF/yr</span></div>
+                <div class="gap-item"><span class="name">OC GWRS (indirect potable reuse)</span><span class="vol green">145,000 AF/yr</span></div>
+                <div class="gap-item"><span class="name">Carlsbad seawater desal</span><span class="vol green">56,000 AF/yr</span></div>
+                <div class="gap-item"><span class="name">Phoenix recycled water</span><span class="vol green">40,000 AF/yr</span></div>
+                <div class="gap-item"><span class="name">Tucson recycled + recharge</span><span class="vol green">22,000 AF/yr</span></div>
+                <div class="gap-item"><span class="name">El Paso KBH brackish desal</span><span class="vol green">15,000 AF/yr</span></div>
+                <div class="gap-item" style="border-top:1px solid var(--border); padding-top:10px; margin-top:4px;"><span class="name" style="color:var(--text); font-weight:700;">Subtotal recycling/desal</span><span class="vol green">~478,000 AF/yr</span></div>
+            </div>
+
+            <div class="gap-card">
+                <h3><span class="status-dot operating"></span> Conservation &amp; Transfers (Operating)</h3>
+                <div class="gap-item"><span class="name">500+ Plan / IRA conservation</span><span class="vol" style="color:var(--warning);">500,000 AF/yr **</span></div>
+                <div class="gap-item"><span class="name">IID &rarr; San Diego transfers (QSA)</span><span class="vol green">150,000 AF/yr</span></div>
+                <div class="gap-item"><span class="name">PVID fallowing (MWD agreement)</span><span class="vol green">100,000 AF/yr</span></div>
+                <div class="gap-item"><span class="name">Las Vegas turf removal savings</span><span class="vol green">40,000 AF/yr</span></div>
+                <div class="gap-item" style="font-size:0.78rem; font-style:italic; color:var(--warning); padding:4px 0;">** 500+ Plan funded through ~2026 via IRA. Continuation uncertain &mdash; $4B federal commitment may not be renewed.</div>
+                <div class="gap-item" style="border-top:1px solid var(--border); padding-top:10px; margin-top:4px;"><span class="name" style="color:var(--text); font-weight:700;">Subtotal conservation</span><span class="vol green">~790,000 AF/yr</span></div>
+            </div>
+
+            <div class="gap-card">
+                <h3><span class="status-dot construction"></span> Under Construction / Planned</h3>
+                <div class="gap-item"><span class="name">Pure Water LA (~2035)</span><span class="vol blue">230,000 AF/yr</span></div>
+                <div class="gap-item"><span class="name">LA stormwater capture master plan</span><span class="vol blue">132,000 AF/yr</span></div>
+                <div class="gap-item"><span class="name">San Diego Pure Water Ph 1+2</span><span class="vol amber">94,000 AF/yr</span></div>
+                <div class="gap-item"><span class="name">Aurora Prairie Waters expansion (~2030)</span><span class="vol blue">50,000 AF/yr</span></div>
+                <div class="gap-item"><span class="name">Silicon Valley AWPC (~2027)</span><span class="vol amber">24,000 AF/yr</span></div>
+                <div class="gap-item"><span class="name">El Paso DPR (~2028)</span><span class="vol amber">11,200 AF/yr</span></div>
+                <div class="gap-item"><span class="name">Other smaller projects</span><span class="vol amber">~30,000 AF/yr</span></div>
+                <div class="gap-item" style="font-size:0.78rem; font-style:italic; color:var(--text-muted); padding:4px 0;">Huntington Beach desal rejected 12-0 by CA Coastal Commission (2022).</div>
+                <div class="gap-item" style="border-top:1px solid var(--border); padding-top:10px; margin-top:4px;"><span class="name" style="color:var(--text); font-weight:700;">Subtotal planned additions</span><span class="vol blue">~571,000 AF/yr</span></div>
+            </div>
+        </div>
+
+        <!-- Total and gap -->
+        <div class="callout" style="background: rgba(239,68,68,0.06);">
+            <strong>The drought paradox: Recharge capacity is highest when you need it least.</strong><br>
+            <span style="color:var(--text-muted); font-size:0.9rem;">
+                <strong style="color:var(--success);">Wet-year total (operating + planned):</strong> ~4.3M AF/year &mdash; impressive on paper, covering ~72% of the deficit.<br>
+                <strong style="color:var(--danger);">Drought-year total (drought-proof only):</strong> ~845K AF/year &mdash; just 14% of the deficit. California's 2.5M AF/year of recharge vanishes. The AWBA can't bank water it doesn't receive. Idaho's recharge drops with snowmelt.<br><br>
+                The 4.47M AF in Arizona's Water Bank is a genuine strategic reserve &mdash; <strong>but it's a one-time withdrawal, not annual capacity</strong>. At a 6 MAF/year deficit, that reserve covers 9 months.<br><br>
+                By 2100 (SSP5-8.5): deficit grows to <strong style="color:var(--danger);">10.8 MAF/year</strong>. Even wet-year capacity would cover just 40%.
+            </span>
+        </div>
+
+        <div class="callout callout-info">
+            <strong>What the current effort gets right:</strong> Las Vegas is the gold standard &mdash; they cut per-capita use 40%, recycle 99% of indoor water, banned non-functional turf, and built a deep-lake intake as insurance. Orange County proved potable reuse works at 130 MGD. Idaho's ESPA program has recharged 2.3M AF since 2014. California recharged 7.4M AF in three wet years. Arizona's Water Bank holds 4.47M AF in strategic reserve. Salt Lake County is coming online. These aren't failures &mdash; they're proofs of concept. <strong>The problem is drought-proof capacity (recycling, desal, conservation) needs to scale 5&ndash;10x while recharge programs need guaranteed water sources that don't disappear during drought.</strong>
+        </div>
+
+        <!-- Key gaps -->
+        <div class="chart-wrap">
+            <div class="chart-title" style="color:var(--danger);"><span class="dot" style="background:var(--danger)"></span> Critical Gaps in Current Plans</div>
+            <table class="data-table">
+                <thead>
+                    <tr><th style="width:35%">Gap</th><th>Scale of Problem</th><th>What Exists</th><th>What's Missing</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Agricultural conversion</strong></td>
+                        <td>Agriculture uses ~70&ndash;80% of Western water; ~55% still flood-irrigated</td>
+                        <td>IID/PVID transfers (~250K AF/yr), some EQIP grants</td>
+                        <td class="highlight">No systematic program to convert millions of flood-irrigated acres to drip with mandatory curtailment. The biggest single lever is barely being pulled.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Inland city recycling</strong></td>
+                        <td>Phoenix, Denver, Salt Lake City, Albuquerque &mdash; large cities without ocean access</td>
+                        <td>Phoenix recycles 40K AF/yr (mostly non-potable); Tucson 22K AF/yr</td>
+                        <td class="highlight">No major inland city has an Orange County-scale potable reuse facility. Phoenix alone produces 90K AF/yr of effluent &mdash; most goes to habitat, not reuse.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ogallala Aquifer regulation</strong></td>
+                        <td>11 km&sup3;/year depletion; southern sections exhausting by 2050&ndash;2070</td>
+                        <td>Local groundwater conservation districts (Texas) with limited enforcement; a few small pilots near Lubbock</td>
+                        <td class="highlight">No meaningful recharge program. No binding pumping limits. The largest aquifer in the US is essentially being mined with no plan.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Rural AZ groundwater</strong></td>
+                        <td>Aquifers declining 5&ndash;10 ft/year outside Active Management Areas</td>
+                        <td>Unregulated. Foreign-owned farms (e.g., Fondomonte) pump without limits for export crops.</td>
+                        <td class="highlight">Arizona only regulates groundwater inside 5 AMAs. Most of the state has zero pumping limits, zero monitoring.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Post-2026 Colorado River framework</strong></td>
+                        <td>Current guidelines expire 2026; 7 states must agree on 4&ndash;6 MAF in cuts</td>
+                        <td>Negotiations ongoing; no signed agreement. The 500+ Plan is a stopgap, not a permanent solution.</td>
+                        <td class="highlight">No legally binding long-term agreement that accepts the river produces ~12&ndash;13 MAF, not 15+. The single most important policy action remains unresolved.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="callout" style="background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.25);">
+            <strong style="color:var(--warning);">Bottom line: Current efforts are necessary but cover only ~28% of the existing deficit.</strong> The trajectory shows a system where the gap between water supply and demand widens every year while new capacity comes online in trickles, not floods. To close the gap by 2050 would require roughly <strong>tripling the rate of new water production and conservation</strong> compared to current plans. That's not impossible &mdash; Israel and Singapore have done it at national scale &mdash; but it requires policy urgency that doesn't exist yet.
+        </div>
+    </section>
+
     <!-- SOLUTIONS: WATER STORAGE TECHNOLOGY -->
     <section>
         <h2>Water Storage &amp; Conservation Technologies</h2>
@@ -576,6 +814,13 @@
             <li><strong>U.S. Bureau of Reclamation</strong> &mdash; Colorado River Basin Water Supply and Demand Study (2012, updated).</li>
             <li><strong>USGS</strong> &mdash; National Water Information System. Ogallala/High Plains aquifer monitoring data.</li>
             <li><strong>NASA GRACE/GRACE-FO</strong> &mdash; Satellite gravimetry total water storage anomaly data (2002&ndash;present).</li>
+            <li><strong>Arizona Water Banking Authority</strong> &mdash; <a href="https://waterbank.az.gov/plans-reports/annual-reports" style="color:var(--accent);">Annual Reports</a>. 4.47M AF banked; 2026 Plan of Operation.</li>
+            <li><strong>Idaho Water Resource Board</strong> &mdash; <a href="https://idwr.idaho.gov/IWRB/programs/aquifer-stabilization/" style="color:var(--accent);">ESPA Aquifer Stabilization</a>. 2.3M AF recharged since 2014; 350K AF/yr goal.</li>
+            <li><strong>California DWR</strong> &mdash; <a href="https://water.ca.gov/programs/all-programs/flood-mar" style="color:var(--accent);">Flood-MAR Program</a>; 7.4M AF managed recharge 2022&ndash;2024.</li>
+            <li><strong>Orange County Water District</strong> &mdash; GWRS Final Expansion to 130 MGD (145K AF/yr), completed 2023.</li>
+            <li><strong>Metropolitan Water District of Salt Lake &amp; Sandy</strong> &mdash; <a href="https://www.mwdsls.gov/managed-aquifer-recharge-project" style="color:var(--accent);">MAR Project</a>. 29 AF/day capacity, startup August 2025.</li>
+            <li><strong>City of Aurora, CO</strong> &mdash; <a href="https://www.auroragov.org/residents/water/water_system/water_sources/prairie_waters" style="color:var(--accent);">Prairie Waters Project</a>. 10K AF/yr current, expanding to 50K AF/yr.</li>
+            <li><strong>Governor of California (March 2026)</strong> &mdash; <a href="https://www.gov.ca.gov/2026/03/13/new-report-highlights-californias-vital-work-to-recharge-groundwater/" style="color:var(--accent);">Groundwater recharge report</a>.</li>
         </ul>
         <p style="margin-top:16px; font-size:0.8rem; color:var(--text-muted);">
             <strong>Methodology note:</strong> This is a simplified scenario model intended for public communication, not operational water management. Flow projections use the Udall &amp; Overpeck (2017) temperature-sensitivity approach applied to CMIP6 temperature trajectories. Drought probabilities are derived from the Ault et al. (2016) and Cook et al. (2015) frameworks. For operational decisions, consult the Bureau of Reclamation's full CMIP6 ensemble downscaling and the NIDIS drought outlook.
@@ -849,7 +1094,100 @@ new Chart(document.getElementById('aquiferChart'), {
 });
 
 // ================================================================
-// 5. TECHNOLOGY COST COMPARISON
+// 5. GAP ANALYSIS CHART
+// ================================================================
+const gapAnalysisYears = [2025, 2035, 2050, 2075, 2100, 2125];
+
+// Deficit projections (from model)
+const deficitModScenario = [5.53, 5.93, 6.76, 7.64, 8.53, 9.08];
+const deficitHighScenario = [5.61, 6.06, 7.19, 8.84, 10.76, 11.65];
+
+// Current drought-proof capacity + planned additions coming online
+// 845K now, +89K by 2028, +571K by 2035, then modest growth
+const droughtProofCapacity = [0.85, 1.1, 1.5, 1.8, 2.0, 2.1];
+
+// Best-case wet-year capacity (includes variable sources)
+const wetYearCapacity = [2.1, 2.8, 3.5, 4.0, 4.3, 4.5];
+
+new Chart(document.getElementById('gapAnalysisChart'), {
+    type: 'line',
+    data: {
+        labels: gapAnalysisYears,
+        datasets: [
+            {
+                label: 'Deficit (High Emissions)',
+                data: deficitHighScenario,
+                borderColor: '#ef4444',
+                backgroundColor: 'rgba(239,68,68,0.08)',
+                borderWidth: 3,
+                pointRadius: 5,
+                pointBackgroundColor: '#ef4444',
+                fill: true,
+                tension: 0.3
+            },
+            {
+                label: 'Deficit (Moderate Emissions)',
+                data: deficitModScenario,
+                borderColor: '#f59e0b',
+                backgroundColor: 'rgba(245,158,11,0.08)',
+                borderWidth: 2.5,
+                pointRadius: 5,
+                pointBackgroundColor: '#f59e0b',
+                fill: false,
+                tension: 0.3,
+                borderDash: [6, 3]
+            },
+            {
+                label: 'Wet-Year Capacity (optimistic)',
+                data: wetYearCapacity,
+                borderColor: '#3b82f6',
+                backgroundColor: 'rgba(59,130,246,0.1)',
+                borderWidth: 2.5,
+                pointRadius: 5,
+                pointBackgroundColor: '#3b82f6',
+                fill: true,
+                tension: 0.3
+            },
+            {
+                label: 'Drought-Proof Capacity (what works when it matters)',
+                data: droughtProofCapacity,
+                borderColor: '#10b981',
+                backgroundColor: 'rgba(16,185,129,0.15)',
+                borderWidth: 3,
+                pointRadius: 6,
+                pointBackgroundColor: '#10b981',
+                fill: true,
+                tension: 0.3
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        interaction: { intersect: false, mode: 'index' },
+        plugins: {
+            legend: { position: 'bottom', labels: { padding: 16, usePointStyle: true } },
+            tooltip: {
+                callbacks: {
+                    label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y.toFixed(1)} MAF/year`
+                }
+            }
+        },
+        scales: {
+            y: {
+                title: { display: true, text: 'Million Acre-Feet / Year' },
+                min: 0, max: 13,
+                grid: { color: 'rgba(30,58,95,0.3)' }
+            },
+            x: {
+                title: { display: true, text: 'Year' },
+                grid: { color: 'rgba(30,58,95,0.2)' }
+            }
+        }
+    }
+});
+
+// ================================================================
+// 6. TECHNOLOGY COST COMPARISON
 // ================================================================
 new Chart(document.getElementById('techChart'), {
     type: 'bar',
