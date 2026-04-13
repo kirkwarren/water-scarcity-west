@@ -66,21 +66,22 @@ doc.add_page_break()
 doc.add_heading('How to Post This Thread', level=1)
 
 instructions = [
-    'This document contains a 4-post thread for X (Twitter). Each post includes:',
+    'This document contains a 6-post thread for X (Twitter). Each post includes:',
     '',
     '   1. The exact text to copy/paste (inside the bordered box)',
-    '   2. The chart image to attach (shown below each post)',
+    '   2. The chart or map image to attach (shown below each post)',
     '   3. Character count (X limit is 280 characters)',
     '',
     'Posting order:',
     '   - Post 1 first as a standalone tweet',
-    '   - Posts 2-4 as replies to Post 1 (creating a thread)',
-    '   - Post the link ONLY in Post 4 to avoid algorithm suppression on earlier posts',
+    '   - Posts 2-6 as replies to Post 1 (creating a thread)',
+    '   - Post the link ONLY in Post 6 (final post) to avoid algorithm suppression',
     '',
     'Tips for engagement:',
     '   - Post between 8-10am or 5-7pm local time for peak visibility',
-    '   - The chart images are optimized for dark mode feeds',
+    '   - The chart/map images are optimized for dark mode feeds',
     '   - Images with data visualizations get 2-3x more engagement than text-only',
+    '   - The map posts (5-6) are the most shareable — lead with those if reposting',
 ]
 
 for line in instructions:
@@ -139,19 +140,42 @@ posts = [
         'text': (
             "The solutions are proven and affordable. Managed aquifer recharge: $150-500/AF. "
             "Water recycling: $1,000-1,800/AF. The tech exists.\n\n"
-            "The bottleneck is political will, not engineering.\n\n"
-            "Full interactive model, sources, and gap analysis:\n"
+            "The bottleneck is political will, not engineering."
+        ),
+        'note': 'Reply to Post 3. No link yet — save it for the final post.',
+    },
+    {
+        'number': 5,
+        'image': 'map_no_intervention_timeline.png',
+        'image_label': 'Attach: map_no_intervention_timeline.png',
+        'text': (
+            "Here's what happens if we do nothing.\n\n"
+            "Water stress spreads from the Southwest through the entire Western US by 2100. "
+            "Arizona hits 97. Nevada 95. California 90.\n\n"
+            "States we don't think of as \"dry\" — Kansas, Nebraska, Colorado — join them as the Ogallala Aquifer depletes."
+        ),
+        'note': 'Reply to Post 4. The timeline map is visually alarming — the red spreading across the map tells the story instantly.',
+    },
+    {
+        'number': 6,
+        'image': 'map_2100_sidebyside.png',
+        'image_label': 'Attach: map_2100_sidebyside.png',
+        'text': (
+            "But it doesn't have to be this way.\n\n"
+            "Left: 2100 without action. Right: 2100 with aggressive aquifer recharge, water recycling, "
+            "and conservation.\n\n"
+            "Every state drops below moderate stress. The tech is proven. The choice is now.\n\n"
             "https://kirkwarren.github.io/water-scarcity-west/"
         ),
-        'note': 'Reply to Post 3. Link goes here (final post) to minimize algo suppression on the thread.',
+        'note': 'Reply to Post 5. This is the climax of the thread — the hopeful contrast + the link. The side-by-side map is the single most shareable image.',
     },
 ]
 
-doc.add_heading('X/Twitter Thread (4 Posts)', level=1)
+doc.add_heading('X/Twitter Thread (6 Posts)', level=1)
 
 for post in posts:
     # Post header
-    doc.add_heading(f'Post {post["number"]} of 4', level=2)
+    doc.add_heading(f'Post {post["number"]} of 6', level=2)
 
     # Character count
     char_count = len(post['text'])
