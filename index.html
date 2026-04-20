@@ -807,40 +807,37 @@
         </div>
     </section>
 
-</div><!-- end container for light sections -->
-
-<!-- ═══ 05 GAP ANALYSIS (dark band) ═══ -->
-<section class="dark-band">
-    <div class="container">
+    <!-- ═══ 05 GAP ANALYSIS ═══ -->
+    <section>
         <div class="section-intro">
             <span class="section-number">05 &mdash; Current Efforts vs. The Need</span>
             <h2>Is What We're Doing Enough?</h2>
             <p class="lead">Active programs are producing real results&thinsp;&mdash;&thinsp;California recharged 7.4M AF over 2022&ndash;2024. But most recharge depends on wet years. During drought, when you need it most, the spigot runs dry.</p>
         </div>
 
-        <div class="meter-wrap" style="background:var(--navy-light); border-color:#1E3A5F;">
+        <div class="meter-wrap">
             <div class="meter-header">
-                <span class="title" style="color:#F1F5F9;">Best Case (Wet Year)</span>
-                <span class="subtitle" style="color:#64748B;">~2.1M AF/yr vs. 6.0M AF/yr deficit</span>
+                <span class="title">Best Case (Wet Year)</span>
+                <span class="subtitle">~2.1M AF/yr vs. 6.0M AF/yr deficit</span>
             </div>
-            <div class="meter-bar" style="background:#0F1923;">
+            <div class="meter-bar">
                 <div class="meter-fill" style="width:35%; background: linear-gradient(90deg, var(--teal), var(--amber));"></div>
             </div>
-            <div class="meter-footer" style="color:#64748B;">
-                <span>0 MAF</span><span>35% covered</span><span style="color:var(--accent-light);">6.0 MAF/yr deficit</span>
+            <div class="meter-footer">
+                <span>0 MAF</span><span>35% covered</span><span style="color:var(--accent);">6.0 MAF/yr deficit</span>
             </div>
         </div>
 
-        <div class="meter-wrap" style="background:var(--navy-light); border-color:#1E3A5F;">
+        <div class="meter-wrap">
             <div class="meter-header">
-                <span class="title" style="color:#F1F5F9;">Worst Case (Drought Year)</span>
-                <span class="subtitle" style="color:#64748B;">~845K AF/yr vs. 6.0M AF/yr deficit</span>
+                <span class="title">Worst Case (Drought Year)</span>
+                <span class="subtitle">~845K AF/yr vs. 6.0M AF/yr deficit</span>
             </div>
-            <div class="meter-bar" style="background:#0F1923;">
+            <div class="meter-bar">
                 <div class="meter-fill" style="width:14%; background: linear-gradient(90deg, var(--red), #7f1d1d);"></div>
             </div>
-            <div class="meter-footer" style="color:#64748B;">
-                <span>0 MAF</span><span style="color:var(--accent-light);">14% covered</span><span style="color:var(--accent-light);">6.0 MAF/yr deficit</span>
+            <div class="meter-footer">
+                <span>0 MAF</span><span style="color:var(--accent);">14% covered</span><span style="color:var(--accent);">6.0 MAF/yr deficit</span>
             </div>
         </div>
 
@@ -853,13 +850,10 @@
             <strong>The drought paradox:</strong> Most recharge capacity depends on surplus water that disappears during the droughts it's meant to buffer against. California's 2.5M AF/year of recharge vanishes in dry years. The AWBA can't bank water it doesn't receive. Arizona's 4.47M AF strategic reserve covers just 9 months at the current deficit rate.
         </div>
 
-        <div class="callout callout-teal" style="border-left-color:var(--teal-light);">
+        <div class="callout callout-teal">
             <strong>What the current effort gets right:</strong> Las Vegas cut per-capita use 40%, recycles 99% of indoor water, and banned non-functional turf. Orange County proved potable reuse at 130 MGD. Idaho's ESPA has recharged 2.3M AF since 2014. Salt Lake County is coming online. These are proofs of concept&thinsp;&mdash;&thinsp;they need to be replicated everywhere, at 5&ndash;10x scale, within a decade.
         </div>
-    </div>
-</section>
-
-<div class="container">
+    </section>
 
     <!-- ═══ 06 PREDICTIVE MAPS ═══ -->
     <section>
@@ -1146,6 +1140,7 @@ Chart.defaults.font.size = 12;
 
 const legendStyle = { position: 'bottom', labels: { padding: 20, usePointStyle: true, pointStyleWidth: 10, font: { size: 11 } } };
 const gridStyle = { color: COLORS.border };
+const tickStyle = { color: COLORS.muted };
 
 // ── 1. FLOW ──
 new Chart(document.getElementById('flowChart'), {
@@ -1222,25 +1217,24 @@ new Chart(document.getElementById('aquiferChart'), {
 // ── 5. GAP ANALYSIS (dark section) ──
 const gapCtx = document.getElementById('gapAnalysisChart');
 if (gapCtx) {
-    const isDark = true;
     new Chart(gapCtx, {
         type: 'line',
         data: {
             labels: [2025,2035,2050,2075,2100,2125],
             datasets: [
-                { label:'Deficit (High Emissions)', data:[5.61,6.06,7.19,8.84,10.76,11.65], borderColor:'#E86D2E', backgroundColor:'rgba(232,109,46,0.08)', borderWidth:3, pointRadius:5, pointBackgroundColor:'#E86D2E', fill:true, tension:0.3 },
-                { label:'Deficit (Moderate)', data:[5.53,5.93,6.76,7.64,8.53,9.08], borderColor:'#F59E0B', borderDash:[6,3], borderWidth:2, pointRadius:4, pointBackgroundColor:'#F59E0B', fill:false, tension:0.3 },
-                { label:'Wet-Year Capacity', data:[2.1,2.8,3.5,4.0,4.3,4.5], borderColor:'#60A5FA', backgroundColor:'rgba(96,165,250,0.08)', borderWidth:2.5, pointRadius:5, pointBackgroundColor:'#60A5FA', fill:true, tension:0.3 },
-                { label:'Drought-Proof Capacity', data:[0.85,1.1,1.5,1.8,2.0,2.1], borderColor:'#2AA394', backgroundColor:'rgba(42,163,148,0.12)', borderWidth:3, pointRadius:6, pointBackgroundColor:'#2AA394', fill:true, tension:0.3 }
+                { label:'Deficit (High Emissions)', data:[5.61,6.06,7.19,8.84,10.76,11.65], borderColor:COLORS.accent, backgroundColor:'rgba(196,80,26,0.06)', borderWidth:3, pointRadius:5, pointBackgroundColor:COLORS.accent, fill:true, tension:0.3 },
+                { label:'Deficit (Moderate)', data:[5.53,5.93,6.76,7.64,8.53,9.08], borderColor:COLORS.amber, borderDash:[6,3], borderWidth:2, pointRadius:4, pointBackgroundColor:COLORS.amber, fill:false, tension:0.3 },
+                { label:'Wet-Year Capacity', data:[2.1,2.8,3.5,4.0,4.3,4.5], borderColor:COLORS.blue, backgroundColor:'rgba(37,99,235,0.06)', borderWidth:2.5, pointRadius:5, pointBackgroundColor:COLORS.blue, fill:true, tension:0.3 },
+                { label:'Drought-Proof Capacity', data:[0.85,1.1,1.5,1.8,2.0,2.1], borderColor:COLORS.teal, backgroundColor:'rgba(26,122,109,0.08)', borderWidth:3, pointRadius:6, pointBackgroundColor:COLORS.teal, fill:true, tension:0.3 }
             ]
         },
         options: {
             responsive:true, interaction:{intersect:false,mode:'index'},
-            plugins: { legend:{ position:'bottom', labels:{ padding:20, usePointStyle:true, pointStyleWidth:10, font:{size:11}, color:'#94A3B8' } },
+            plugins: { legend: legendStyle,
                 tooltip:{ callbacks:{ label: c=>`${c.dataset.label}: ${c.parsed.y.toFixed(1)} MAF/yr` } } },
             scales: {
-                y:{ title:{display:true,text:'Million Acre-Feet / Year',font:{size:11},color:'#94A3B8'}, min:0,max:13, grid:{color:'#1E3A5F'}, ticks:{color:'#64748B'} },
-                x:{ grid:{display:false}, ticks:{color:'#64748B'} }
+                y:{ title:{display:true,text:'Million Acre-Feet / Year',font:{size:11}}, min:0,max:13, grid:gridStyle, ticks:tickStyle },
+                x:{ grid:{display:false}, ticks:tickStyle }
             }
         }
     });
