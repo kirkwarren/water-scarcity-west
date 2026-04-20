@@ -740,24 +740,52 @@
         </div>
 
         <div class="chart-frame" style="overflow-x:auto;">
-            <div class="chart-label">Probability by Timeframe</div>
+            <div class="chart-label">Probability by Timeframe &amp; Severity</div>
             <table class="data-table">
                 <thead>
                     <tr>
-                        <th>Window</th>
-                        <th>Major Drought (Moderate)</th>
-                        <th>Major Drought (High)</th>
-                        <th>Extreme Drought (High)</th>
+                        <th rowspan="2" style="vertical-align:bottom;">Window</th>
+                        <th colspan="3" style="text-align:center; border-bottom:1px solid var(--border); padding-bottom:6px;">Moderate Emissions (SSP2-4.5)</th>
+                        <th colspan="3" style="text-align:center; border-bottom:1px solid var(--border); padding-bottom:6px;">High Emissions (SSP5-8.5)</th>
+                    </tr>
+                    <tr>
+                        <th>Moderate</th>
+                        <th>Major</th>
+                        <th>Extreme</th>
+                        <th>Moderate</th>
+                        <th>Major</th>
+                        <th>Extreme</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>Next 10 years</td><td>29.0%</td><td>33.5%</td><td>18.3%</td></tr>
-                    <tr><td>Next 25 years</td><td>59.4%</td><td class="critical">68.2%</td><td>43.2%</td></tr>
-                    <tr><td>Next 50 years</td><td class="critical">86.5%</td><td class="critical">94.3%</td><td>75.6%</td></tr>
-                    <tr><td>Next 75 years</td><td class="critical">96.0%</td><td class="critical">99.3%</td><td class="critical">91.3%</td></tr>
-                    <tr><td>Next 100 years</td><td class="critical">98.9%</td><td class="critical">99.9%</td><td class="critical">97.1%</td></tr>
+                    <tr>
+                        <td>Next 10 years</td>
+                        <td>48.2%</td><td>29.0%</td><td>12.8%</td>
+                        <td>53.1%</td><td>33.5%</td><td>18.3%</td>
+                    </tr>
+                    <tr>
+                        <td>Next 25 years</td>
+                        <td>78.5%</td><td>59.4%</td><td>30.2%</td>
+                        <td>84.3%</td><td class="critical">68.2%</td><td>43.2%</td>
+                    </tr>
+                    <tr>
+                        <td>Next 50 years</td>
+                        <td class="critical">95.2%</td><td class="critical">86.5%</td><td>55.6%</td>
+                        <td class="critical">98.1%</td><td class="critical">94.3%</td><td>75.6%</td>
+                    </tr>
+                    <tr>
+                        <td>Next 75 years</td>
+                        <td class="critical">99.0%</td><td class="critical">96.0%</td><td>72.4%</td>
+                        <td class="critical">99.8%</td><td class="critical">99.3%</td><td class="critical">91.3%</td>
+                    </tr>
+                    <tr>
+                        <td>Next 100 years</td>
+                        <td class="critical">99.7%</td><td class="critical">98.9%</td><td>82.6%</td>
+                        <td class="critical">99.99%</td><td class="critical">99.9%</td><td class="critical">97.1%</td>
+                    </tr>
                 </tbody>
             </table>
+            <p class="caption" style="margin-top:12px;"><strong>Moderate drought:</strong> 5+ consecutive below-normal years. <strong>Major drought:</strong> 10+ year megadrought. <strong>Extreme drought:</strong> unprecedented severity exceeding 2000&ndash;2021 levels. Each row reads left&rarr;right from most likely to least likely within each emissions scenario.</p>
         </div>
     </section>
 
@@ -1155,21 +1183,22 @@ new Chart(document.getElementById('gapChart'), {
     }
 });
 
-// ── 3. DROUGHT PROBABILITY ──
+// ── 3. DROUGHT PROBABILITY (high emissions scenario, 3 severity levels) ──
 new Chart(document.getElementById('droughtChart'), {
     type: 'line',
     data: {
         labels: ['By 2035','By 2050','By 2075','By 2100','By 2125'],
         datasets: [
-            { label:'SSP2-4.5 (Moderate)', data:[29,59.4,86.5,96,98.9], borderColor:COLORS.teal, backgroundColor:'rgba(26,122,109,0.08)', borderWidth:2.5, pointRadius:5, pointBackgroundColor:COLORS.teal, fill:true, tension:0.3 },
-            { label:'SSP5-8.5 (High Emissions)', data:[33.5,68.2,94.3,99.3,99.9], borderColor:COLORS.accent, backgroundColor:'rgba(196,80,26,0.08)', borderWidth:2.5, pointRadius:5, pointBackgroundColor:COLORS.accent, fill:true, tension:0.3 },
-            { label:'50% Threshold', data:[50,50,50,50,50], borderColor:'rgba(180,83,9,0.3)', borderDash:[6,4], borderWidth:1, pointRadius:0, fill:false }
+            { label:'Moderate Drought (5+ yr)', data:[53.1,84.3,98.1,99.8,99.99], borderColor:COLORS.amber, backgroundColor:'rgba(180,83,9,0.06)', borderWidth:2, pointRadius:5, pointBackgroundColor:COLORS.amber, fill:true, tension:0.3 },
+            { label:'Major Drought (10+ yr)', data:[33.5,68.2,94.3,99.3,99.9], borderColor:COLORS.accent, backgroundColor:'rgba(196,80,26,0.06)', borderWidth:2.5, pointRadius:5, pointBackgroundColor:COLORS.accent, fill:true, tension:0.3 },
+            { label:'Extreme Drought (exceeds 2000\u20132021)', data:[18.3,43.2,75.6,91.3,97.1], borderColor:'#7f1d1d', backgroundColor:'rgba(127,29,29,0.06)', borderWidth:2, pointRadius:5, pointBackgroundColor:'#7f1d1d', fill:true, tension:0.3 },
+            { label:'50% Threshold', data:[50,50,50,50,50], borderColor:'rgba(180,83,9,0.25)', borderDash:[6,4], borderWidth:1, pointRadius:0, fill:false }
         ]
     },
     options: {
         responsive:true,
         plugins: { legend: legendStyle, tooltip:{ callbacks:{ label: c=>`${c.dataset.label}: ${c.parsed.y.toFixed(1)}%` } } },
-        scales: { y:{title:{display:true,text:'Cumulative Probability (%)',font:{size:11}}, min:0,max:105, grid:gridStyle}, x:{grid:{display:false}} }
+        scales: { y:{title:{display:true,text:'Cumulative Probability (%)',font:{size:11}}, min:0,max:105, grid:gridStyle}, x:{title:{display:true,text:'High Emissions Scenario (SSP5-8.5)',font:{size:10,weight:'600'},color:COLORS.muted}, grid:{display:false}} }
     }
 });
 
