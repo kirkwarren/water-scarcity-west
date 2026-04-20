@@ -855,33 +855,12 @@
         </div>
     </section>
 
-    <!-- ═══ 06 PREDICTIVE MAPS ═══ -->
-    <section>
-        <div class="section-intro">
-            <span class="section-number">06 &mdash; Two Possible Futures</span>
-            <h2>Predictive Outcomes, 2025&ndash;2100</h2>
-            <p class="lead">Water stress projections under two scenarios. Top: no additional intervention. Bottom: aggressive deployment of aquifer recharge, recycling, agricultural reform, and groundwater regulation.</p>
-        </div>
-
-        <div class="map-frame">
-            <img src="map_comparison.png" alt="Western US Water Stress: 100-Year Predictive Outcomes">
-        </div>
-
-        <div class="map-frame" style="margin-top:24px;">
-            <img src="map_2100_sidebyside.png" alt="2100: Two Possible Futures">
-        </div>
-
-        <div class="callout">
-            <strong>The contrast is stark.</strong> Without intervention by 2100, Arizona (97), Nevada (95), California (90), and Utah (88) reach catastrophic water stress. Kansas and Texas&thinsp;&mdash;&thinsp;states not traditionally "desert"&thinsp;&mdash;&thinsp;join them as the Ogallala depletes. With aggressive intervention, every Western state stays below 40. The technology is proven. The gap is political will.
-        </div>
-    </section>
-
-    <!-- ═══ 07 INTERACTIVE SIMULATOR ═══ -->
+    <!-- ═══ 06 INTERACTIVE SIMULATOR + MAP ═══ -->
     <section id="simulator">
         <div class="section-intro">
-            <span class="section-number">07 &mdash; Interactive Model</span>
+            <span class="section-number">06 &mdash; Interactive Model</span>
             <h2>How Much Investment Does It Take?</h2>
-            <p class="lead">Drag the slider to explore how different levels of federal and state investment change water stress outcomes across the West by 2100. The model allocates capital to the most cost-effective technologies first.</p>
+            <p class="lead">Drag the slider to explore how different levels of federal and state investment change water stress outcomes across the West by 2100. Watch the map transform in real time as capital flows to the most cost-effective technologies first.</p>
         </div>
 
         <!-- Slider -->
@@ -959,12 +938,50 @@
             </div>
         </div>
 
-        <!-- State stress grid -->
+        <!-- Interactive map -->
         <div class="chart-frame">
             <div class="chart-label">Projected Water Stress by State (2100)</div>
-            <p style="font-size:0.82rem; color:var(--ink-muted); margin-bottom:16px;">Scores: 0&ndash;20 low, 20&ndash;40 moderate, 40&ndash;60 high, 60&ndash;80 severe, 80&ndash;100 catastrophic</p>
-            <div class="sim-state-grid" id="simStateGrid"></div>
-            <div class="sim-legend">
+            <p style="font-size:0.82rem; color:var(--ink-muted); margin-bottom:16px;">Hover any state for details. Scores: 0&ndash;20 low, 20&ndash;40 moderate, 40&ndash;60 high, 60&ndash;80 severe, 80&ndash;100 catastrophic</p>
+            <div id="simMapContainer" style="position:relative; max-width:760px; margin:0 auto;">
+                <svg id="simMap" viewBox="0 0 760 520" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; display:block;">
+                    <!-- State paths (simplified boundaries) -->
+                    <g id="mapStates" stroke="#FAFAF7" stroke-width="1.5" stroke-linejoin="round">
+                        <path id="map-WA" d="M95,18 L100,10 L130,5 L170,8 L195,5 L195,15 L192,35 L186,60 L170,70 L145,75 L110,72 L90,55 L80,40 Z"/>
+                        <path id="map-OR" d="M80,40 L90,55 L110,72 L145,75 L170,70 L186,60 L192,75 L190,110 L185,130 L100,130 L75,115 L60,90 L65,60 Z"/>
+                        <path id="map-MT" d="M195,15 L195,5 L310,10 L380,15 L375,30 L365,70 L355,80 L290,80 L220,75 L195,70 L192,35 Z"/>
+                        <path id="map-ID" d="M192,35 L195,70 L220,75 L240,90 L245,120 L240,150 L230,170 L195,170 L190,140 L190,110 L192,75 L186,60 Z"/>
+                        <path id="map-WY" d="M240,90 L290,80 L355,80 L365,70 L370,85 L375,150 L370,165 L245,165 L240,150 L245,120 Z"/>
+                        <path id="map-CA" d="M60,90 L75,115 L100,130 L100,150 L90,180 L80,210 L70,250 L65,290 L80,320 L95,345 L110,355 L115,330 L120,300 L120,270 L115,240 L115,210 L120,180 L125,165 L135,150 L155,140 L165,130 L185,130 L190,110 L100,130 Z"/>
+                        <path id="map-NV" d="M100,130 L185,130 L190,110 L190,140 L195,170 L185,215 L175,260 L165,290 L140,290 L120,300 L115,270 L115,240 L115,210 L120,180 L125,165 L135,150 L155,140 L165,130 Z"/>
+                        <path id="map-UT" d="M195,170 L230,170 L240,150 L245,165 L370,165 L370,185 L315,185 L315,265 L255,265 L255,215 L185,215 Z"/>
+                        <path id="map-CO" d="M315,185 L370,185 L370,165 L375,150 L465,155 L465,205 L460,265 L315,265 Z"/>
+                        <path id="map-AZ" d="M115,330 L120,300 L140,290 L165,290 L175,260 L185,215 L255,215 L255,265 L255,345 L250,390 L230,420 L195,430 L165,420 L140,395 L120,370 Z"/>
+                        <path id="map-NM" d="M255,265 L315,265 L460,265 L460,305 L455,355 L445,410 L350,410 L255,405 L250,390 L255,345 Z"/>
+                        <path id="map-ND" d="M380,15 L520,20 L530,25 L530,80 L520,85 L380,80 L375,30 Z"/>
+                        <path id="map-SD" d="M380,80 L520,85 L530,80 L530,85 L525,105 L520,145 L515,155 L375,150 L370,85 Z"/>
+                        <path id="map-NE" d="M375,150 L515,155 L520,145 L525,170 L530,195 L580,195 L580,230 L540,230 L465,230 L465,205 L465,155 Z"/>
+                        <path id="map-KS" d="M465,230 L540,230 L580,230 L610,235 L610,300 L545,300 L460,305 L460,265 L465,230 Z"/>
+                        <path id="map-OK" d="M460,305 L545,300 L610,300 L610,305 L665,305 L665,310 L685,310 L685,355 L665,365 L610,370 L545,375 L460,375 L455,355 L460,305 Z"/>
+                        <path id="map-TX" d="M445,410 L455,355 L460,375 L545,375 L610,370 L665,365 L685,355 L700,370 L710,395 L720,430 L710,460 L690,485 L660,500 L620,510 L580,500 L545,475 L510,455 L480,445 L455,435 Z"/>
+                    </g>
+                    <!-- State labels (positioned at centroids) -->
+                    <g id="mapLabels" font-family="Inter, sans-serif" font-weight="600" text-anchor="middle" dominant-baseline="central" pointer-events="none"></g>
+                </svg>
+                <!-- Tooltip -->
+                <div id="mapTooltip" style="display:none; position:absolute; background:var(--white); border:1px solid var(--border); border-radius:4px; padding:10px 14px; box-shadow:0 4px 16px rgba(0,0,0,0.1); pointer-events:none; z-index:10; font-size:0.82rem; min-width:160px;">
+                    <div style="font-weight:700; margin-bottom:4px;" id="ttName"></div>
+                    <div style="display:flex; justify-content:space-between; gap:16px;">
+                        <span style="color:var(--ink-muted);">No investment:</span>
+                        <span id="ttBase" style="font-weight:600;"></span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; gap:16px;">
+                        <span style="color:var(--ink-muted);">With investment:</span>
+                        <span id="ttNew" style="font-weight:600;"></span>
+                    </div>
+                    <div id="ttChange" style="margin-top:4px; font-size:0.75rem; font-weight:600;"></div>
+                </div>
+            </div>
+            <div class="sim-legend" style="margin-top:16px;">
                 <div class="sim-legend-item"><div class="sim-legend-swatch" style="background:#1A7A6D;"></div>Low (0&ndash;20)</div>
                 <div class="sim-legend-item"><div class="sim-legend-swatch" style="background:#2AA394;"></div>Moderate (20&ndash;40)</div>
                 <div class="sim-legend-item"><div class="sim-legend-swatch" style="background:#B45309;"></div>High (40&ndash;60)</div>
@@ -974,14 +991,14 @@
         </div>
 
         <div class="callout callout-teal">
-            <strong>Key insight:</strong> The model shows that roughly <strong>$50&ndash;60 billion</strong> in new infrastructure investment closes the current 6 MAF/year deficit with drought-proof capacity. That's less than a single year of federal highway spending ($67B in 2024). Beyond $75B, every Western state drops below moderate water stress even under high-emissions scenarios. The technologies are proven&thinsp;&mdash;&thinsp;the price tag is known&thinsp;&mdash;&thinsp;what's missing is the political decision.
+            <strong>Key insight:</strong> Drag the slider to $50&ndash;60B and watch the map transform&thinsp;&mdash;&thinsp;that's enough to close today's 6 MAF/year deficit with drought-proof capacity. That's less than a single year of federal highway spending ($67B in 2024). Push past $75B and every Western state drops below moderate water stress, even under high-emissions scenarios. The technologies are proven&thinsp;&mdash;&thinsp;the price tag is known&thinsp;&mdash;&thinsp;what's missing is the political decision.
         </div>
     </section>
 
-    <!-- ═══ 08 TECHNOLOGY ═══ -->
+    <!-- ═══ 07 TECHNOLOGY ═══ -->
     <section>
         <div class="section-intro">
-            <span class="section-number">08 &mdash; The Solutions Exist</span>
+            <span class="section-number">07 &mdash; The Solutions Exist</span>
             <h2>Water Storage &amp; Conservation Technology</h2>
             <p class="lead">Ranked by cost-effectiveness. The most impactful technologies are also the cheapest and most proven.</p>
         </div>
@@ -1043,10 +1060,10 @@
         </div>
     </section>
 
-    <!-- ═══ 08 WHY ACT NOW ═══ -->
+    <!-- ═══ 08 URGENCY ═══ -->
     <section>
         <div class="section-intro">
-            <span class="section-number">09 &mdash; The Urgency</span>
+            <span class="section-number">08 &mdash; The Urgency</span>
             <h2>Why Planning Must Start Now</h2>
             <p class="lead">This is not a future problem. Every key indicator shows the crisis is underway.</p>
         </div>
@@ -1311,14 +1328,85 @@ new Chart(document.getElementById('techChart'), {
         return 'Low';
     }
 
-    // Build state grid HTML
-    const grid = document.getElementById('simStateGrid');
+    // SVG label centroids for each state
+    const CENTROIDS = {
+        WA:{x:140,y:40}, OR:{x:130,y:95}, MT:{x:290,y:45}, ID:{x:210,y:120},
+        WY:{x:310,y:125}, CA:{x:100,y:225}, NV:{x:155,y:210}, UT:{x:265,y:215},
+        CO:{x:390,y:220}, AZ:{x:200,y:340}, NM:{x:360,y:340}, ND:{x:455,y:50},
+        SD:{x:450,y:118}, NE:{x:500,y:192}, KS:{x:535,y:268}, OK:{x:570,y:340},
+        TX:{x:590,y:440}
+    };
+
+    // Build SVG labels
+    const labelsG = document.getElementById('mapLabels');
     STATES.forEach(s => {
-        const div = document.createElement('div');
-        div.className = 'sim-state';
-        div.id = 'state-' + s.abbr;
-        div.innerHTML = `<div class="st-abbr">${s.abbr}</div><div class="st-score">${s.base}</div><div class="st-label">${getStressLabel(s.base)}</div>`;
-        grid.appendChild(div);
+        const c = CENTROIDS[s.abbr];
+        if (!c) return;
+        const abbr = document.createElementNS('http://www.w3.org/2000/svg','text');
+        abbr.setAttribute('x', c.x);
+        abbr.setAttribute('y', c.y - 7);
+        abbr.setAttribute('font-size', '11');
+        abbr.setAttribute('fill', '#fff');
+        abbr.id = 'lbl-abbr-' + s.abbr;
+        abbr.textContent = s.abbr;
+        labelsG.appendChild(abbr);
+        const score = document.createElementNS('http://www.w3.org/2000/svg','text');
+        score.setAttribute('x', c.x);
+        score.setAttribute('y', c.y + 8);
+        score.setAttribute('font-size', '13');
+        score.setAttribute('fill', '#fff');
+        score.setAttribute('font-weight', '800');
+        score.id = 'lbl-score-' + s.abbr;
+        score.textContent = s.base;
+        labelsG.appendChild(score);
+    });
+
+    // Tooltip logic
+    const tooltip = document.getElementById('mapTooltip');
+    const ttName = document.getElementById('ttName');
+    const ttBase = document.getElementById('ttBase');
+    const ttNew = document.getElementById('ttNew');
+    const ttChange = document.getElementById('ttChange');
+    const mapContainer = document.getElementById('simMapContainer');
+    let currentScores = {};
+    STATES.forEach(s => { currentScores[s.abbr] = s.base; });
+
+    document.querySelectorAll('#mapStates path').forEach(path => {
+        const abbr = path.id.replace('map-','');
+        const st = STATES.find(s => s.abbr === abbr);
+        if (!st) return;
+        path.style.cursor = 'pointer';
+        path.style.transition = 'fill 0.4s ease, opacity 0.2s';
+        path.addEventListener('mouseenter', function(e) {
+            this.style.opacity = '0.85';
+            const score = currentScores[abbr];
+            ttName.textContent = st.name;
+            ttBase.textContent = st.base + ' (' + getStressLabel(st.base) + ')';
+            ttBase.style.color = getStressColor(st.base).bg;
+            ttNew.textContent = score + ' (' + getStressLabel(score) + ')';
+            ttNew.style.color = getStressColor(score).bg;
+            const diff = st.base - score;
+            if (diff > 0) {
+                ttChange.textContent = '\u2193 ' + diff + ' point reduction';
+                ttChange.style.color = '#1A7A6D';
+            } else {
+                ttChange.textContent = 'No change (invest to reduce)';
+                ttChange.style.color = 'var(--ink-muted)';
+            }
+            tooltip.style.display = 'block';
+        });
+        path.addEventListener('mousemove', function(e) {
+            const rect = mapContainer.getBoundingClientRect();
+            let left = e.clientX - rect.left + 16;
+            let top = e.clientY - rect.top - 10;
+            if (left + 180 > rect.width) left = e.clientX - rect.left - 190;
+            tooltip.style.left = left + 'px';
+            tooltip.style.top = top + 'px';
+        });
+        path.addEventListener('mouseleave', function() {
+            this.style.opacity = '1';
+            tooltip.style.display = 'none';
+        });
     });
 
     function allocateInvestment(billionsUSD) {
@@ -1370,25 +1458,22 @@ new Chart(document.getElementById('techChart'), {
         document.getElementById('simRecycle').textContent = (alloc.recycle || 0).toFixed(1);
         document.getElementById('simDesal').textContent = (alloc.desal || 0).toFixed(1);
 
-        // State stress scores
+        // State stress scores — update SVG map
         let statesBelowModerate = 0;
         STATES.forEach(s => {
             const reduction = totalCapacity * s.sensitivity;
             const newScore = Math.max(Math.round(s.base - reduction), 5);
             const colors = getStressColor(newScore);
-            const label = getStressLabel(newScore);
-            const el = document.getElementById('state-' + s.abbr);
-            el.style.backgroundColor = colors.bg;
-            el.style.color = colors.text;
-            el.style.borderColor = colors.bg;
-            el.querySelector('.st-score').textContent = newScore;
-            el.querySelector('.st-label').textContent = label;
+            currentScores[s.abbr] = newScore;
+            const path = document.getElementById('map-' + s.abbr);
+            if (path) path.style.fill = colors.bg;
+            const scoreLbl = document.getElementById('lbl-score-' + s.abbr);
+            if (scoreLbl) scoreLbl.textContent = newScore;
             if (newScore < 40) statesBelowModerate++;
         });
 
         document.getElementById('simStates').textContent = statesBelowModerate + ' / 17';
 
-        // Color the states count
         const stEl = document.getElementById('simStates');
         if (statesBelowModerate >= 15) stEl.style.color = '#1A7A6D';
         else if (statesBelowModerate >= 10) stEl.style.color = '#B45309';
