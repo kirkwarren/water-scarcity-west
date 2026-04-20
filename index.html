@@ -419,6 +419,229 @@
 
         footer a { color: var(--teal-light); text-decoration: none; }
 
+        /* ─── Interactive Simulator ─── */
+        .sim-controls {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            padding: 36px 40px;
+            margin-bottom: 32px;
+        }
+
+        .sim-slider-row {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 8px;
+        }
+
+        .sim-slider-row input[type="range"] {
+            flex: 1;
+            height: 6px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: var(--sand-dark);
+            border-radius: 100px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .sim-slider-row input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+            border: 3px solid var(--white);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+            transition: transform 0.15s;
+        }
+
+        .sim-slider-row input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+        }
+
+        .sim-slider-row input[type="range"]::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+            border: 3px solid var(--white);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+        }
+
+        .sim-value {
+            font-family: var(--serif);
+            font-size: 2.4rem;
+            font-weight: 400;
+            min-width: 140px;
+            text-align: right;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .sim-ticks {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.7rem;
+            color: var(--ink-faint);
+            padding: 0 2px;
+            margin-bottom: 20px;
+        }
+
+        .sim-results {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-bottom: 32px;
+        }
+
+        .sim-result {
+            background: var(--white);
+            padding: 24px 20px;
+            text-align: center;
+        }
+
+        .sim-result .sim-r-value {
+            font-family: var(--serif);
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1;
+            margin-bottom: 4px;
+            transition: color 0.3s;
+        }
+
+        .sim-result .sim-r-label {
+            font-size: 0.75rem;
+            color: var(--ink-muted);
+        }
+
+        .sim-state-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .sim-state {
+            border-radius: 2px;
+            padding: 12px 8px;
+            text-align: center;
+            transition: background-color 0.4s, color 0.3s;
+            border: 1px solid var(--border);
+        }
+
+        .sim-state .st-abbr {
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 2px;
+        }
+
+        .sim-state .st-score {
+            font-family: var(--serif);
+            font-size: 1.3rem;
+            font-weight: 400;
+            line-height: 1;
+        }
+
+        .sim-state .st-label {
+            font-size: 0.62rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 2px;
+            opacity: 0.8;
+        }
+
+        .sim-breakdown {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .sim-tech {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .sim-tech .st-name {
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--ink-faint);
+            margin-bottom: 6px;
+        }
+
+        .sim-tech .st-val {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            font-weight: 400;
+            line-height: 1;
+            margin-bottom: 2px;
+        }
+
+        .sim-tech .st-unit {
+            font-size: 0.7rem;
+            color: var(--ink-faint);
+        }
+
+        .sim-meter-track {
+            height: 12px;
+            background: var(--sand);
+            border-radius: 100px;
+            overflow: hidden;
+            position: relative;
+            margin: 12px 0;
+        }
+
+        .sim-meter-fill {
+            height: 100%;
+            border-radius: 100px;
+            transition: width 0.4s ease, background 0.4s;
+        }
+
+        .sim-threshold {
+            position: absolute;
+            top: -2px;
+            bottom: -2px;
+            width: 2px;
+            background: var(--ink);
+            opacity: 0.3;
+        }
+
+        .sim-legend {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+
+        .sim-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            color: var(--ink-muted);
+        }
+
+        .sim-legend-swatch {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
         /* ─── Responsive ─── */
         @media (max-width: 768px) {
             .hero { padding: 60px 0 48px; }
@@ -427,10 +650,17 @@
             .gap-grid { grid-template-columns: 1fr; }
             .chart-frame { padding: 20px 16px; }
             .container { padding: 0 20px; }
+            .sim-results { grid-template-columns: 1fr; }
+            .sim-breakdown { grid-template-columns: repeat(2, 1fr); }
+            .sim-controls { padding: 24px 20px; }
+            .sim-slider-row { flex-direction: column; gap: 12px; }
+            .sim-value { text-align: center; min-width: unset; }
+            .sim-state-grid { grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); }
         }
 
         @media (max-width: 480px) {
             .hero-stats { grid-template-columns: 1fr; }
+            .sim-breakdown { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -624,10 +854,112 @@
         </div>
     </section>
 
-    <!-- ═══ 07 TECHNOLOGY ═══ -->
+    <!-- ═══ 07 INTERACTIVE SIMULATOR ═══ -->
+    <section id="simulator">
+        <div class="section-intro">
+            <span class="section-number">07 &mdash; Interactive Model</span>
+            <h2>How Much Investment Does It Take?</h2>
+            <p class="lead">Drag the slider to explore how different levels of federal and state investment change water stress outcomes across the West by 2100. The model allocates capital to the most cost-effective technologies first.</p>
+        </div>
+
+        <!-- Slider -->
+        <div class="sim-controls">
+            <div style="font-size:0.72rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:12px;">Total New Infrastructure Investment</div>
+            <div class="sim-slider-row">
+                <input type="range" id="investSlider" min="0" max="100" value="0" step="1">
+                <div class="sim-value" id="investValue">$0B</div>
+            </div>
+            <div class="sim-ticks">
+                <span>$0</span><span>$25B</span><span>$50B</span><span>$75B</span><span>$100B</span>
+            </div>
+        </div>
+
+        <!-- Top-line results -->
+        <div class="sim-results">
+            <div class="sim-result">
+                <div class="sim-r-value" id="simCapacity" style="color:var(--teal);">0</div>
+                <div class="sim-r-label">New capacity (MAF/yr)</div>
+            </div>
+            <div class="sim-result">
+                <div class="sim-r-value" id="simCoverage" style="color:var(--accent);">14%</div>
+                <div class="sim-r-label">Deficit covered (drought-proof)</div>
+            </div>
+            <div class="sim-result">
+                <div class="sim-r-value" id="simStates" style="color:var(--ink);">0</div>
+                <div class="sim-r-label">States below moderate stress</div>
+            </div>
+        </div>
+
+        <!-- Deficit coverage meter -->
+        <div class="chart-frame">
+            <div class="chart-label">Deficit Coverage (2100, Drought Conditions)</div>
+            <div style="display:flex; justify-content:space-between; font-size:0.82rem; margin-bottom:4px;">
+                <span>Existing capacity: <strong>0.85 MAF/yr</strong></span>
+                <span id="simNewLabel" style="color:var(--teal); font-weight:600;">+ 0 MAF/yr new</span>
+            </div>
+            <div class="sim-meter-track">
+                <div class="sim-meter-fill" id="simMeterExisting" style="width:8%; background:var(--sand-dark); position:absolute; z-index:1;"></div>
+                <div class="sim-meter-fill" id="simMeterNew" style="width:8%; background:var(--teal); position:relative; z-index:2;"></div>
+                <div class="sim-threshold" style="left:55%;" title="Current deficit (6 MAF)"></div>
+                <div class="sim-threshold" style="left:100%;" title="2100 deficit (10.8 MAF)"></div>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:0.7rem; color:var(--ink-faint);">
+                <span>0</span>
+                <span style="left:55%; position:relative;">6 MAF (today's deficit)</span>
+                <span>10.8 MAF (2100 deficit)</span>
+            </div>
+        </div>
+
+        <!-- Technology breakdown -->
+        <div class="chart-frame">
+            <div class="chart-label">Where the Money Goes</div>
+            <div class="sim-breakdown">
+                <div class="sim-tech">
+                    <div class="st-name">Aquifer Recharge</div>
+                    <div class="st-val" id="simMAR" style="color:var(--teal);">0</div>
+                    <div class="st-unit">MAF/yr new capacity</div>
+                </div>
+                <div class="sim-tech">
+                    <div class="st-name">Ag Conversion</div>
+                    <div class="st-val" id="simAg" style="color:var(--teal);">0</div>
+                    <div class="st-unit">MAF/yr water saved</div>
+                </div>
+                <div class="sim-tech">
+                    <div class="st-name">Water Recycling</div>
+                    <div class="st-val" id="simRecycle" style="color:var(--blue);">0</div>
+                    <div class="st-unit">MAF/yr new capacity</div>
+                </div>
+                <div class="sim-tech">
+                    <div class="st-name">Desalination</div>
+                    <div class="st-val" id="simDesal" style="color:var(--blue);">0</div>
+                    <div class="st-unit">MAF/yr new capacity</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- State stress grid -->
+        <div class="chart-frame">
+            <div class="chart-label">Projected Water Stress by State (2100)</div>
+            <p style="font-size:0.82rem; color:var(--ink-muted); margin-bottom:16px;">Scores: 0&ndash;20 low, 20&ndash;40 moderate, 40&ndash;60 high, 60&ndash;80 severe, 80&ndash;100 catastrophic</p>
+            <div class="sim-state-grid" id="simStateGrid"></div>
+            <div class="sim-legend">
+                <div class="sim-legend-item"><div class="sim-legend-swatch" style="background:#1A7A6D;"></div>Low (0&ndash;20)</div>
+                <div class="sim-legend-item"><div class="sim-legend-swatch" style="background:#2AA394;"></div>Moderate (20&ndash;40)</div>
+                <div class="sim-legend-item"><div class="sim-legend-swatch" style="background:#B45309;"></div>High (40&ndash;60)</div>
+                <div class="sim-legend-item"><div class="sim-legend-swatch" style="background:#C4501A;"></div>Severe (60&ndash;80)</div>
+                <div class="sim-legend-item"><div class="sim-legend-swatch" style="background:#7f1d1d;"></div>Catastrophic (80&ndash;100)</div>
+            </div>
+        </div>
+
+        <div class="callout callout-teal">
+            <strong>Key insight:</strong> The model shows that roughly <strong>$50&ndash;60 billion</strong> in new infrastructure investment closes the current 6 MAF/year deficit with drought-proof capacity. That's less than a single year of federal highway spending ($67B in 2024). Beyond $75B, every Western state drops below moderate water stress even under high-emissions scenarios. The technologies are proven&thinsp;&mdash;&thinsp;the price tag is known&thinsp;&mdash;&thinsp;what's missing is the political decision.
+        </div>
+    </section>
+
+    <!-- ═══ 08 TECHNOLOGY ═══ -->
     <section>
         <div class="section-intro">
-            <span class="section-number">07 &mdash; The Solutions Exist</span>
+            <span class="section-number">08 &mdash; The Solutions Exist</span>
             <h2>Water Storage &amp; Conservation Technology</h2>
             <p class="lead">Ranked by cost-effectiveness. The most impactful technologies are also the cheapest and most proven.</p>
         </div>
@@ -692,7 +1024,7 @@
     <!-- ═══ 08 WHY ACT NOW ═══ -->
     <section>
         <div class="section-intro">
-            <span class="section-number">08 &mdash; The Urgency</span>
+            <span class="section-number">09 &mdash; The Urgency</span>
             <h2>Why Planning Must Start Now</h2>
             <p class="lead">This is not a future problem. Every key indicator shows the crisis is underway.</p>
         </div>
@@ -901,6 +1233,163 @@ new Chart(document.getElementById('techChart'), {
         scales: { x:{stacked:true, title:{display:true,text:'Cost ($/acre-foot)',font:{size:11}}, grid:gridStyle}, y:{stacked:true, grid:{display:false}} }
     }
 });
+
+// ═══════════════════════════════════════════════════════════
+// INTERACTIVE INVESTMENT SIMULATOR
+// ═══════════════════════════════════════════════════════════
+(function() {
+    const EXISTING_DROUGHT_PROOF = 0.85; // MAF/yr
+    const CURRENT_DEFICIT = 6.0;
+    const DEFICIT_2100 = 10.8;
+
+    // Capital cost per MAF/yr of new capacity ($ billions)
+    // MAR is cheapest, then ag conversion, then recycling, then desal
+    const TECH_TRANCHES = [
+        { name: 'mar',     maxCapacity: 2.0, costPerMAF: 0.5,  label: 'Aquifer Recharge' },
+        { name: 'ag',      maxCapacity: 1.8, costPerMAF: 1.0,  label: 'Ag Conversion' },
+        { name: 'recycle', maxCapacity: 2.5, costPerMAF: 6.0,  label: 'Water Recycling' },
+        { name: 'desal',   maxCapacity: 4.0, costPerMAF: 20.0, label: 'Desalination' },
+    ];
+
+    // State data: baseline 2100 stress (no intervention) and sensitivity to new capacity
+    const STATES = [
+        { abbr:'AZ', name:'Arizona',      base:97, sensitivity:8.0 },
+        { abbr:'NV', name:'Nevada',        base:95, sensitivity:7.5 },
+        { abbr:'CA', name:'California',    base:90, sensitivity:6.5 },
+        { abbr:'NM', name:'New Mexico',    base:90, sensitivity:7.0 },
+        { abbr:'UT', name:'Utah',          base:88, sensitivity:7.5 },
+        { abbr:'CO', name:'Colorado',      base:82, sensitivity:6.0 },
+        { abbr:'KS', name:'Kansas',        base:78, sensitivity:5.5 },
+        { abbr:'TX', name:'Texas',         base:78, sensitivity:5.0 },
+        { abbr:'NE', name:'Nebraska',      base:68, sensitivity:5.0 },
+        { abbr:'OK', name:'Oklahoma',      base:65, sensitivity:4.5 },
+        { abbr:'WY', name:'Wyoming',       base:55, sensitivity:4.0 },
+        { abbr:'ID', name:'Idaho',         base:50, sensitivity:4.5 },
+        { abbr:'OR', name:'Oregon',        base:48, sensitivity:3.5 },
+        { abbr:'WA', name:'Washington',    base:45, sensitivity:3.0 },
+        { abbr:'MT', name:'Montana',       base:38, sensitivity:2.5 },
+        { abbr:'SD', name:'South Dakota',  base:35, sensitivity:3.0 },
+        { abbr:'ND', name:'North Dakota',  base:28, sensitivity:2.0 },
+    ];
+
+    function getStressColor(score) {
+        if (score >= 80) return { bg: '#7f1d1d', text: '#fecaca' };
+        if (score >= 60) return { bg: '#C4501A', text: '#fff' };
+        if (score >= 40) return { bg: '#B45309', text: '#fff' };
+        if (score >= 20) return { bg: '#2AA394', text: '#fff' };
+        return { bg: '#1A7A6D', text: '#fff' };
+    }
+
+    function getStressLabel(score) {
+        if (score >= 80) return 'Catastrophic';
+        if (score >= 60) return 'Severe';
+        if (score >= 40) return 'High';
+        if (score >= 20) return 'Moderate';
+        return 'Low';
+    }
+
+    // Build state grid HTML
+    const grid = document.getElementById('simStateGrid');
+    STATES.forEach(s => {
+        const div = document.createElement('div');
+        div.className = 'sim-state';
+        div.id = 'state-' + s.abbr;
+        div.innerHTML = `<div class="st-abbr">${s.abbr}</div><div class="st-score">${s.base}</div><div class="st-label">${getStressLabel(s.base)}</div>`;
+        grid.appendChild(div);
+    });
+
+    function allocateInvestment(billionsUSD) {
+        let remaining = billionsUSD;
+        const alloc = {};
+        let totalCapacity = 0;
+
+        for (const t of TECH_TRANCHES) {
+            const maxSpend = t.maxCapacity * t.costPerMAF;
+            const spend = Math.min(remaining, maxSpend);
+            const capacity = spend / t.costPerMAF;
+            alloc[t.name] = capacity;
+            totalCapacity += capacity;
+            remaining -= spend;
+            if (remaining <= 0) break;
+        }
+
+        return { alloc, totalCapacity };
+    }
+
+    function update(investment) {
+        const { alloc, totalCapacity } = allocateInvestment(investment);
+
+        // Update display values
+        document.getElementById('investValue').textContent = '$' + investment + 'B';
+        document.getElementById('simCapacity').textContent = totalCapacity.toFixed(1);
+        document.getElementById('simNewLabel').textContent = '+ ' + totalCapacity.toFixed(1) + ' MAF/yr new';
+
+        const totalDroughtProof = EXISTING_DROUGHT_PROOF + totalCapacity;
+        const coveragePct = Math.min((totalDroughtProof / CURRENT_DEFICIT) * 100, 100);
+        document.getElementById('simCoverage').textContent = Math.round(coveragePct) + '%';
+
+        // Color the coverage value
+        const covEl = document.getElementById('simCoverage');
+        if (coveragePct >= 95) covEl.style.color = '#1A7A6D';
+        else if (coveragePct >= 60) covEl.style.color = '#B45309';
+        else covEl.style.color = '#C4501A';
+
+        // Meter
+        const meterPct = Math.min((totalDroughtProof / DEFICIT_2100) * 100, 100);
+        const existingPct = (EXISTING_DROUGHT_PROOF / DEFICIT_2100) * 100;
+        document.getElementById('simMeterNew').style.width = meterPct + '%';
+        document.getElementById('simMeterNew').style.background =
+            coveragePct >= 95 ? '#1A7A6D' : coveragePct >= 60 ? '#B45309' : 'var(--accent)';
+
+        // Tech breakdown
+        document.getElementById('simMAR').textContent = (alloc.mar || 0).toFixed(1);
+        document.getElementById('simAg').textContent = (alloc.ag || 0).toFixed(1);
+        document.getElementById('simRecycle').textContent = (alloc.recycle || 0).toFixed(1);
+        document.getElementById('simDesal').textContent = (alloc.desal || 0).toFixed(1);
+
+        // State stress scores
+        let statesBelowModerate = 0;
+        STATES.forEach(s => {
+            const reduction = totalCapacity * s.sensitivity;
+            const newScore = Math.max(Math.round(s.base - reduction), 5);
+            const colors = getStressColor(newScore);
+            const label = getStressLabel(newScore);
+            const el = document.getElementById('state-' + s.abbr);
+            el.style.backgroundColor = colors.bg;
+            el.style.color = colors.text;
+            el.style.borderColor = colors.bg;
+            el.querySelector('.st-score').textContent = newScore;
+            el.querySelector('.st-label').textContent = label;
+            if (newScore < 40) statesBelowModerate++;
+        });
+
+        document.getElementById('simStates').textContent = statesBelowModerate + ' / 17';
+
+        // Color the states count
+        const stEl = document.getElementById('simStates');
+        if (statesBelowModerate >= 15) stEl.style.color = '#1A7A6D';
+        else if (statesBelowModerate >= 10) stEl.style.color = '#B45309';
+        else stEl.style.color = 'var(--ink)';
+    }
+
+    // Initial render
+    update(0);
+
+    // Slider event
+    const slider = document.getElementById('investSlider');
+    slider.addEventListener('input', function() {
+        update(parseInt(this.value));
+    });
+
+    // Smooth gradient on slider track
+    function updateSliderTrack() {
+        const val = slider.value;
+        const pct = val + '%';
+        slider.style.background = `linear-gradient(to right, #C4501A 0%, #1A7A6D ${pct}, #E8E3D8 ${pct})`;
+    }
+    slider.addEventListener('input', updateSliderTrack);
+    updateSliderTrack();
+})();
 </script>
 
 </body>
