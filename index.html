@@ -886,7 +886,7 @@
             </div>
             <div class="sim-result">
                 <div class="sim-r-value" id="simCoverage" style="color:var(--accent);">14%</div>
-                <div class="sim-r-label">Deficit covered (drought-proof)</div>
+                <div class="sim-r-label">Capacity delivered</div>
             </div>
             <div class="sim-result">
                 <div class="sim-r-value" id="simStates" style="color:var(--ink);">0</div>
@@ -896,21 +896,18 @@
 
         <!-- Deficit coverage meter -->
         <div class="chart-frame">
-            <div class="chart-label">Deficit Coverage (2100, Drought Conditions)</div>
+            <div class="chart-label">New Capacity Delivered Across All States</div>
             <div style="display:flex; justify-content:space-between; font-size:0.82rem; margin-bottom:4px;">
                 <span>Existing capacity: <strong>0.85 MAF/yr</strong></span>
                 <span id="simNewLabel" style="color:var(--teal); font-weight:600;">+ 0 MAF/yr new</span>
             </div>
             <div class="sim-meter-track">
-                <div class="sim-meter-fill" id="simMeterExisting" style="width:8%; background:var(--sand-dark); position:absolute; z-index:1;"></div>
-                <div class="sim-meter-fill" id="simMeterNew" style="width:8%; background:var(--teal); position:relative; z-index:2;"></div>
-                <div class="sim-threshold" style="left:55%;" title="Current deficit (6 MAF)"></div>
-                <div class="sim-threshold" style="left:100%;" title="2100 deficit (10.8 MAF)"></div>
+                <div class="sim-meter-fill" id="simMeterExisting" style="width:5%; background:var(--sand-dark); position:absolute; z-index:1;"></div>
+                <div class="sim-meter-fill" id="simMeterNew" style="width:5%; background:var(--teal); position:relative; z-index:2;"></div>
             </div>
             <div style="display:flex; justify-content:space-between; font-size:0.7rem; color:var(--ink-faint);">
                 <span>0</span>
-                <span style="left:55%; position:relative;">6 MAF (today's deficit)</span>
-                <span>10.8 MAF (2100 deficit)</span>
+                <span>~14 MAF/yr total needed across 17 states</span>
             </div>
         </div>
 
@@ -958,7 +955,7 @@
         <!-- State investment breakdown table -->
         <div class="chart-frame">
             <div class="chart-label">Investment Required by State to Reach Safe Levels</div>
-            <p style="font-size:0.82rem; color:var(--ink-muted); margin-bottom:8px;">National investment threshold at which each state reaches safe levels (&lt;40 stress). States share the same capacity pool&thinsp;&mdash;&thinsp;the total is the highest threshold, not a sum.</p>
+            <p style="font-size:0.82rem; color:var(--ink-muted); margin-bottom:8px;">Each state needs its own physical water capacity. The total is the cumulative sum across all 17 states.</p>
             <p style="font-size:0.75rem; color:var(--teal); font-weight:600; margin-bottom:16px;">Adjust the slider above to see states turn safe in real time.</p>
             <div style="overflow-x:auto;">
                 <table class="data-table" id="stateInvestTable">
@@ -975,8 +972,7 @@
                     <tbody id="stateInvestBody"></tbody>
                     <tfoot>
                         <tr style="border-top:2px solid var(--border); font-weight:700;">
-                            <td colspan="2">All states safe when national investment reaches:</td>
-                            <td></td>
+                            <td colspan="3" style="text-align:left;">Cumulative total (all 17 states):</td>
                             <td id="totalMAF"></td>
                             <td id="totalCost"></td>
                             <td></td>
@@ -987,7 +983,7 @@
         </div>
 
         <div class="callout callout-teal">
-            <strong>Key insight:</strong> Drag the slider to $50&ndash;60B and watch the map transform&thinsp;&mdash;&thinsp;that's enough to close today's 6 MAF/year deficit with drought-proof capacity. That's less than a single year of federal highway spending ($67B in 2024). Push past $75B and every Western state drops below moderate water stress, even under high-emissions scenarios. The technologies are proven&thinsp;&mdash;&thinsp;the price tag is known&thinsp;&mdash;&thinsp;what's missing is the political decision.
+            <strong>Key insight:</strong> Drag the slider to ~$65B and watch every state on the map turn green&thinsp;&mdash;&thinsp;that's the cumulative investment to deliver ~14 MAF/yr of new capacity across all 17 western states. That's less than a single year of federal highway spending ($67B in 2024). California ($22B) and Texas ($18B) are the two largest line items, driven by expensive coastal desalination. The technologies are proven&thinsp;&mdash;&thinsp;the price tag is known&thinsp;&mdash;&thinsp;what's missing is the political decision.
         </div>
     </section>
 
@@ -1275,65 +1271,44 @@ new Chart(document.getElementById('techChart'), {
 // ═══════════════════════════════════════════════════════════
 (function() {
     const EXISTING_DROUGHT_PROOF = 0.85; // MAF/yr
-    const CURRENT_DEFICIT = 6.0;
-    const DEFICIT_2100 = 10.8;
 
-    // Capital cost per MAF/yr of new capacity ($ billions)
-    // MAR is cheapest, then ag conversion, then recycling, then desal
+    // National technology tranches (expanded for cumulative state needs)
+    // Fills cheapest first: MAR → ag → stormwater → recycling → brackish desal → coastal desal
     const TECH_TRANCHES = [
-        { name: 'mar',     maxCapacity: 2.0, costPerMAF: 0.5,  label: 'Aquifer Recharge' },
-        { name: 'ag',      maxCapacity: 1.8, costPerMAF: 1.0,  label: 'Ag Conversion' },
-        { name: 'recycle', maxCapacity: 2.5, costPerMAF: 6.0,  label: 'Water Recycling' },
-        { name: 'desal',   maxCapacity: 4.0, costPerMAF: 20.0, label: 'Desalination' },
+        { name: 'mar',     maxCapacity: 4.0,  costPerMAF: 0.5,  label: 'Aquifer Recharge' },
+        { name: 'ag',      maxCapacity: 3.0,  costPerMAF: 1.0,  label: 'Ag Conversion' },
+        { name: 'recycle', maxCapacity: 3.5,  costPerMAF: 5.0,  label: 'Water Recycling' },
+        { name: 'desal',   maxCapacity: 5.0,  costPerMAF: 12.0, label: 'Desalination' },
     ];
 
-    // State data: baseline 2100 stress (no intervention), sensitivity to national capacity,
-    // and primary technology strategy for that state
-    // sensitivity = stress-points reduced per 1 MAF of national capacity added
+    // Per-state data: each state needs its OWN physical water — you can't give
+    // the same acre-foot to Arizona AND California. Total MAF is cumulative.
+    // mafNeeded = actual new capacity this state requires to reach safe levels
+    // stateCostB = mafNeeded × blended costPerMAF for this state's tech mix
     const STATES = [
-        { abbr:'AZ', name:'Arizona',      base:97, sensitivity:8.0, primaryTech:'MAR + Colorado compact reform + recycling' },
-        { abbr:'NV', name:'Nevada',        base:95, sensitivity:7.5, primaryTech:'Recycling (Las Vegas 99%) + MAR + desal pipeline' },
-        { abbr:'CA', name:'California',    base:90, sensitivity:6.5, primaryTech:'Coastal desal + recycling + MAR + stormwater' },
-        { abbr:'NM', name:'New Mexico',    base:90, sensitivity:7.0, primaryTech:'MAR + brackish desal + ag conversion' },
-        { abbr:'UT', name:'Utah',          base:88, sensitivity:7.5, primaryTech:'MAR + Great Salt Lake watershed + recycling' },
-        { abbr:'CO', name:'Colorado',      base:82, sensitivity:6.0, primaryTech:'Compact reform + MAR + ag conversion + recycling' },
-        { abbr:'KS', name:'Kansas',        base:78, sensitivity:5.5, primaryTech:'Ogallala MAR + ag conversion + conservation' },
-        { abbr:'TX', name:'Texas',         base:78, sensitivity:5.0, primaryTech:'Brackish desal + recycling + coastal desal + MAR' },
-        { abbr:'NE', name:'Nebraska',      base:68, sensitivity:5.0, primaryTech:'Ogallala MAR + ag conversion' },
-        { abbr:'OK', name:'Oklahoma',      base:65, sensitivity:4.5, primaryTech:'MAR + stormwater capture + ag efficiency' },
-        { abbr:'WY', name:'Wyoming',       base:55, sensitivity:4.0, primaryTech:'MAR + snowpack storage + conservation' },
-        { abbr:'ID', name:'Idaho',         base:50, sensitivity:4.5, primaryTech:'ESPA MAR expansion + ag conversion' },
-        { abbr:'OR', name:'Oregon',        base:48, sensitivity:3.5, primaryTech:'MAR + stormwater + recycling' },
-        { abbr:'WA', name:'Washington',    base:45, sensitivity:3.0, primaryTech:'MAR + stormwater + recycling' },
-        { abbr:'MT', name:'Montana',       base:38, sensitivity:2.5, primaryTech:'MAR + conservation' },
-        { abbr:'SD', name:'South Dakota',  base:35, sensitivity:3.0, primaryTech:'MAR + Missouri River management' },
-        { abbr:'ND', name:'North Dakota',  base:28, sensitivity:2.0, primaryTech:'MAR + conservation' },
+        { abbr:'AZ', name:'Arizona',      base:97, mafNeeded:1.80, costPerMAF:3.5, primaryTech:'MAR + Colorado compact reform + recycling' },
+        { abbr:'NV', name:'Nevada',        base:95, mafNeeded:0.45, costPerMAF:6.0, primaryTech:'Recycling (Las Vegas 99%) + MAR + desal pipeline' },
+        { abbr:'CA', name:'California',    base:90, mafNeeded:3.20, costPerMAF:7.0, primaryTech:'Coastal desal + recycling + MAR + stormwater' },
+        { abbr:'NM', name:'New Mexico',    base:90, mafNeeded:0.55, costPerMAF:3.0, primaryTech:'MAR + brackish desal + ag conversion' },
+        { abbr:'UT', name:'Utah',          base:88, mafNeeded:0.75, costPerMAF:3.5, primaryTech:'MAR + Great Salt Lake watershed + recycling' },
+        { abbr:'CO', name:'Colorado',      base:82, mafNeeded:1.10, costPerMAF:4.5, primaryTech:'Compact reform + MAR + ag conversion + recycling' },
+        { abbr:'KS', name:'Kansas',        base:78, mafNeeded:0.85, costPerMAF:2.0, primaryTech:'Ogallala MAR + ag conversion + conservation' },
+        { abbr:'TX', name:'Texas',         base:78, mafNeeded:2.80, costPerMAF:6.5, primaryTech:'Brackish desal + recycling + coastal desal + MAR' },
+        { abbr:'NE', name:'Nebraska',      base:68, mafNeeded:0.65, costPerMAF:1.5, primaryTech:'Ogallala MAR + ag conversion' },
+        { abbr:'OK', name:'Oklahoma',      base:65, mafNeeded:0.55, costPerMAF:2.0, primaryTech:'MAR + stormwater capture + ag efficiency' },
+        { abbr:'WY', name:'Wyoming',       base:55, mafNeeded:0.30, costPerMAF:1.5, primaryTech:'MAR + snowpack storage + conservation' },
+        { abbr:'ID', name:'Idaho',         base:50, mafNeeded:0.35, costPerMAF:1.2, primaryTech:'ESPA MAR expansion + ag conversion' },
+        { abbr:'OR', name:'Oregon',        base:48, mafNeeded:0.25, costPerMAF:2.5, primaryTech:'MAR + stormwater + recycling' },
+        { abbr:'WA', name:'Washington',    base:45, mafNeeded:0.20, costPerMAF:3.0, primaryTech:'MAR + stormwater + recycling' },
+        { abbr:'MT', name:'Montana',       base:38, mafNeeded:0,    costPerMAF:0,   primaryTech:'Already below threshold' },
+        { abbr:'SD', name:'South Dakota',  base:35, mafNeeded:0,    costPerMAF:0,   primaryTech:'Already below threshold' },
+        { abbr:'ND', name:'North Dakota',  base:28, mafNeeded:0,    costPerMAF:0,   primaryTech:'Already below threshold' },
     ];
 
-    // National cost curve: how much $ to generate a given MAF of capacity
-    // Fills cheapest tranches first (MAR → ag → recycling → desal)
-    function nationalCostForCapacity(maf) {
-        let remaining = maf;
-        let cost = 0;
-        for (const t of TECH_TRANCHES) {
-            const used = Math.min(remaining, t.maxCapacity);
-            cost += used * t.costPerMAF;
-            remaining -= used;
-            if (remaining <= 0) break;
-        }
-        if (remaining > 0) cost += remaining * 20.0;
-        return cost;
-    }
-
-    // Per-state: national investment at which THIS state reaches safe levels
-    // States share the same national capacity pool — not independent costs
-    function getStateThreshold(st) {
-        if (st.base <= 40) return { mafNeeded: 0, nationalCostB: 0 };
-        const reduction = st.base - 38;
-        const mafNeeded = reduction / st.sensitivity;
-        const nationalCostB = nationalCostForCapacity(mafNeeded);
-        return { mafNeeded, nationalCostB };
-    }
+    // Pre-compute per-state cost and cumulative totals
+    STATES.forEach(s => { s.stateCostB = s.mafNeeded * s.costPerMAF; });
+    const TOTAL_MAF_NEEDED = STATES.reduce((sum, s) => sum + s.mafNeeded, 0);
+    const TOTAL_COST_NEEDED = STATES.reduce((sum, s) => sum + s.stateCostB, 0);
 
     function getStressColor(score) {
         if (score >= 80) return { bg: '#7f1d1d', text: '#fecaca' };
@@ -1369,7 +1344,7 @@ new Chart(document.getElementById('techChart'), {
     const tooltipDiv = document.createElement('div');
     tooltipDiv.id = 'mapTooltip';
     tooltipDiv.style.cssText = 'display:none; position:absolute; background:var(--white); border:1px solid var(--border); border-radius:4px; padding:10px 14px; box-shadow:0 4px 16px rgba(0,0,0,0.1); pointer-events:none; z-index:10; font-size:0.82rem; min-width:180px;';
-    tooltipDiv.innerHTML = '<div style="font-weight:700; margin-bottom:6px; font-size:0.9rem;" id="ttName"></div><div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:var(--ink-muted);">No investment:</span><span id="ttBase" style="font-weight:600;"></span></div><div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:var(--ink-muted);">With investment:</span><span id="ttNew" style="font-weight:600;"></span></div><div id="ttChange" style="margin-top:4px; font-size:0.75rem; font-weight:600;"></div><div style="border-top:1px solid var(--border); margin-top:8px; padding-top:8px;"><div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:var(--ink-muted);">Investment to safe:</span><span id="ttCost" style="font-weight:700;"></span></div><div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:var(--ink-muted);">New capacity needed:</span><span id="ttMAF" style="font-weight:600;"></span></div><div id="ttTech" style="margin-top:4px; font-size:0.72rem; color:var(--ink-muted); line-height:1.4;"></div></div>';
+    tooltipDiv.innerHTML = '<div style="font-weight:700; margin-bottom:6px; font-size:0.9rem;" id="ttName"></div><div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:var(--ink-muted);">No investment:</span><span id="ttBase" style="font-weight:600;"></span></div><div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:var(--ink-muted);">With investment:</span><span id="ttNew" style="font-weight:600;"></span></div><div id="ttChange" style="margin-top:4px; font-size:0.75rem; font-weight:600;"></div><div style="border-top:1px solid var(--border); margin-top:8px; padding-top:8px;"><div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:var(--ink-muted);">State cost to safe:</span><span id="ttCost" style="font-weight:700;"></span></div><div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:var(--ink-muted);">New capacity needed:</span><span id="ttMAF" style="font-weight:600;"></span></div><div id="ttTech" style="margin-top:4px; font-size:0.72rem; color:var(--ink-muted); line-height:1.4;"></div></div>';
     mapContainer.appendChild(tooltipDiv);
 
     const ttName = document.getElementById('ttName');
@@ -1429,11 +1404,10 @@ new Chart(document.getElementById('techChart'), {
                 const diff = st.base - score;
                 if (diff > 0) { ttChange.textContent = '\u2193 ' + diff + ' point reduction'; ttChange.style.color = '#1A7A6D'; }
                 else { ttChange.textContent = 'No change (invest to reduce)'; ttChange.style.color = 'var(--ink-muted)'; }
-                const thresh = getStateThreshold(st);
-                if (thresh.nationalCostB > 0) {
-                    ttCost.textContent = '$' + thresh.nationalCostB.toFixed(1) + 'B national';
-                    ttCost.style.color = thresh.nationalCostB > 40 ? '#C4501A' : thresh.nationalCostB > 20 ? '#B45309' : '#1A7A6D';
-                    ttMAF.textContent = thresh.mafNeeded.toFixed(1) + ' MAF/yr national capacity';
+                if (st.stateCostB > 0) {
+                    ttCost.textContent = '$' + st.stateCostB.toFixed(1) + 'B';
+                    ttCost.style.color = st.stateCostB > 10 ? '#C4501A' : st.stateCostB > 3 ? '#B45309' : '#1A7A6D';
+                    ttMAF.textContent = st.mafNeeded.toFixed(2) + ' MAF/yr';
                 } else {
                     ttCost.textContent = 'Already safe';
                     ttCost.style.color = '#1A7A6D';
@@ -1497,51 +1471,19 @@ new Chart(document.getElementById('techChart'), {
         update(0);
     });
 
-    function buildInvestTable(currentInvestment) {
-        const inv = currentInvestment || 0;
-        const { totalCapacity } = allocateInvestment(inv);
-        const tbody = document.getElementById('stateInvestBody');
-        if (!tbody) return;
-        tbody.innerHTML = '';
-        const sorted = [...STATES].sort((a, b) => getStateThreshold(b).nationalCostB - getStateThreshold(a).nationalCostB);
-        let maxThreshold = 0;
-        sorted.forEach(st => {
-            const thresh = getStateThreshold(st);
-            if (thresh.nationalCostB > maxThreshold) maxThreshold = thresh.nationalCostB;
-            const reduction = totalCapacity * st.sensitivity;
-            const curScore = Math.max(Math.round(st.base - reduction), 5);
-            const isSafe = curScore < 40;
-            const stressCol = getStressColor(curScore);
-            const baseCol = getStressColor(st.base);
-            const tr = document.createElement('tr');
-            if (isSafe) tr.style.opacity = '0.7';
-            tr.innerHTML = '<td style="text-align:left; font-weight:600;">' + st.name + '</td>'
-                + '<td><span style="display:inline-block; padding:2px 8px; border-radius:3px; font-size:0.78rem; font-weight:700; color:' + baseCol.text + '; background:' + baseCol.bg + ';">' + st.base + '</span></td>'
-                + '<td><span style="display:inline-block; padding:2px 8px; border-radius:3px; font-size:0.78rem; font-weight:700; color:' + stressCol.text + '; background:' + stressCol.bg + ';">' + curScore + ' ' + getStressLabel(curScore) + '</span></td>'
-                + '<td>' + (thresh.mafNeeded > 0 ? thresh.mafNeeded.toFixed(1) : '\u2014') + '</td>'
-                + '<td style="font-weight:700; color:' + (isSafe ? '#1A7A6D' : thresh.nationalCostB > 40 ? '#C4501A' : thresh.nationalCostB > 20 ? '#B45309' : '#1A7A6D') + ';">'
-                    + (thresh.nationalCostB > 0 ? (isSafe ? '\u2713 Covered' : '$' + thresh.nationalCostB.toFixed(1) + 'B') : 'Already safe') + '</td>'
-                + '<td style="text-align:left; font-size:0.78rem; color:var(--ink-muted);">' + st.primaryTech + '</td>';
-            tbody.appendChild(tr);
-        });
-        const totalEl = document.getElementById('totalCost');
-        const totalMAFEl = document.getElementById('totalMAF');
-        if (totalEl) {
-            totalEl.textContent = '$' + maxThreshold.toFixed(1) + 'B';
-            totalEl.style.color = inv >= maxThreshold ? '#1A7A6D' : '#C4501A';
-        }
-        const bottleneck = sorted.reduce((max, st) => {
-            const t = getStateThreshold(st);
-            return t.mafNeeded > max ? t.mafNeeded : max;
-        }, 0);
-        if (totalMAFEl) totalMAFEl.textContent = bottleneck.toFixed(1);
+    // Compute each state's current score based on proportional investment allocation
+    function getStateScore(st, investment) {
+        if (st.stateCostB <= 0) return st.base;
+        const stateShare = investment * (st.stateCostB / TOTAL_COST_NEEDED);
+        const fractionFunded = Math.min(stateShare / st.stateCostB, 1.0);
+        return Math.max(Math.round(st.base - (st.base - 38) * fractionFunded), 5);
     }
 
+    // Allocate national investment across technology tranches
     function allocateInvestment(billionsUSD) {
         let remaining = billionsUSD;
         const alloc = {};
         let totalCapacity = 0;
-
         for (const t of TECH_TRANCHES) {
             const maxSpend = t.maxCapacity * t.costPerMAF;
             const spend = Math.min(remaining, maxSpend);
@@ -1551,57 +1493,91 @@ new Chart(document.getElementById('techChart'), {
             remaining -= spend;
             if (remaining <= 0) break;
         }
-
         return { alloc, totalCapacity };
+    }
+
+    function buildInvestTable(investment) {
+        const tbody = document.getElementById('stateInvestBody');
+        if (!tbody) return;
+        tbody.innerHTML = '';
+        const sorted = [...STATES].sort((a, b) => b.stateCostB - a.stateCostB);
+        sorted.forEach(st => {
+            const curScore = getStateScore(st, investment);
+            const isSafe = curScore < 40;
+            const stressCol = getStressColor(curScore);
+            const baseCol = getStressColor(st.base);
+            const stateShare = st.stateCostB > 0 ? Math.min(investment * (st.stateCostB / TOTAL_COST_NEEDED), st.stateCostB) : 0;
+            const remaining = st.stateCostB - stateShare;
+            const tr = document.createElement('tr');
+            if (isSafe) tr.style.opacity = '0.7';
+            tr.innerHTML = '<td style="text-align:left; font-weight:600;">' + st.name + '</td>'
+                + '<td><span style="display:inline-block; padding:2px 8px; border-radius:3px; font-size:0.78rem; font-weight:700; color:' + baseCol.text + '; background:' + baseCol.bg + ';">' + st.base + '</span></td>'
+                + '<td><span style="display:inline-block; padding:2px 8px; border-radius:3px; font-size:0.78rem; font-weight:700; color:' + stressCol.text + '; background:' + stressCol.bg + ';">' + curScore + ' ' + getStressLabel(curScore) + '</span></td>'
+                + '<td>' + (st.mafNeeded > 0 ? st.mafNeeded.toFixed(2) : '\u2014') + '</td>'
+                + '<td style="font-weight:700; color:' + (isSafe ? '#1A7A6D' : st.stateCostB > 10 ? '#C4501A' : st.stateCostB > 3 ? '#B45309' : '#1A7A6D') + ';">'
+                    + (st.stateCostB > 0 ? (isSafe ? '\u2713 $' + st.stateCostB.toFixed(1) + 'B' : '$' + st.stateCostB.toFixed(1) + 'B') : 'Already safe') + '</td>'
+                + '<td style="text-align:left; font-size:0.78rem; color:var(--ink-muted);">' + st.primaryTech + '</td>';
+            tbody.appendChild(tr);
+        });
+        const totalEl = document.getElementById('totalCost');
+        const totalMAFEl = document.getElementById('totalMAF');
+        if (totalEl) {
+            totalEl.textContent = '$' + TOTAL_COST_NEEDED.toFixed(1) + 'B';
+            totalEl.style.color = investment >= TOTAL_COST_NEEDED ? '#1A7A6D' : '#C4501A';
+        }
+        if (totalMAFEl) totalMAFEl.textContent = TOTAL_MAF_NEEDED.toFixed(1);
     }
 
     function update(investment) {
         const { alloc, totalCapacity } = allocateInvestment(investment);
 
-        // Update display values
-        document.getElementById('investValue').textContent = '$' + investment + 'B';
-        document.getElementById('simCapacity').textContent = totalCapacity.toFixed(1);
-        document.getElementById('simNewLabel').textContent = '+ ' + totalCapacity.toFixed(1) + ' MAF/yr new';
+        // Compute cumulative new MAF delivered across all states
+        let deliveredMAF = 0;
+        STATES.forEach(s => {
+            if (s.stateCostB <= 0) return;
+            const stateShare = Math.min(investment * (s.stateCostB / TOTAL_COST_NEEDED), s.stateCostB);
+            deliveredMAF += (stateShare / s.costPerMAF);
+        });
 
-        const totalDroughtProof = EXISTING_DROUGHT_PROOF + totalCapacity;
-        const coveragePct = Math.min((totalDroughtProof / CURRENT_DEFICIT) * 100, 100);
+        document.getElementById('investValue').textContent = '$' + investment + 'B';
+        document.getElementById('simCapacity').textContent = deliveredMAF.toFixed(1);
+        document.getElementById('simNewLabel').textContent = '+ ' + deliveredMAF.toFixed(1) + ' MAF/yr new';
+
+        const totalDroughtProof = EXISTING_DROUGHT_PROOF + deliveredMAF;
+        const coveragePct = Math.min((deliveredMAF / TOTAL_MAF_NEEDED) * 100, 100);
         document.getElementById('simCoverage').textContent = Math.round(coveragePct) + '%';
 
-        // Color the coverage value
         const covEl = document.getElementById('simCoverage');
         if (coveragePct >= 95) covEl.style.color = '#1A7A6D';
         else if (coveragePct >= 60) covEl.style.color = '#B45309';
         else covEl.style.color = '#C4501A';
 
-        // Meter
-        const meterPct = Math.min((totalDroughtProof / DEFICIT_2100) * 100, 100);
-        const existingPct = (EXISTING_DROUGHT_PROOF / DEFICIT_2100) * 100;
+        // Meter: show progress toward total MAF needed
+        const meterPct = Math.min((totalDroughtProof / TOTAL_MAF_NEEDED) * 100, 100);
         document.getElementById('simMeterNew').style.width = meterPct + '%';
         document.getElementById('simMeterNew').style.background =
             coveragePct >= 95 ? '#1A7A6D' : coveragePct >= 60 ? '#B45309' : 'var(--accent)';
 
-        // Tech breakdown
+        // Tech breakdown (national)
         document.getElementById('simMAR').textContent = (alloc.mar || 0).toFixed(1);
         document.getElementById('simAg').textContent = (alloc.ag || 0).toFixed(1);
         document.getElementById('simRecycle').textContent = (alloc.recycle || 0).toFixed(1);
         document.getElementById('simDesal').textContent = (alloc.desal || 0).toFixed(1);
 
-        // State stress scores — update SVG map
+        // Update map — each state gets proportional share of investment
         let statesBelowModerate = 0;
         STATES.forEach(s => {
-            const reduction = totalCapacity * s.sensitivity;
-            const newScore = Math.max(Math.round(s.base - reduction), 5);
+            const newScore = getStateScore(s, investment);
             const colors = getStressColor(newScore);
             currentScores[s.abbr] = newScore;
-            const path = document.getElementById('map-' + s.abbr);
-            if (path) path.style.fill = colors.bg;
+            const pathEl = document.getElementById('map-' + s.abbr);
+            if (pathEl) pathEl.style.fill = colors.bg;
             const scoreLbl = document.getElementById('lbl-score-' + s.abbr);
             if (scoreLbl) scoreLbl.textContent = newScore;
             if (newScore < 40) statesBelowModerate++;
         });
 
         document.getElementById('simStates').textContent = statesBelowModerate + ' / 17';
-
         const stEl = document.getElementById('simStates');
         if (statesBelowModerate >= 15) stEl.style.color = '#1A7A6D';
         else if (statesBelowModerate >= 10) stEl.style.color = '#B45309';
