@@ -955,6 +955,35 @@
             </div>
         </div>
 
+        <!-- State investment breakdown table -->
+        <div class="chart-frame">
+            <div class="chart-label">Investment Required by State to Reach Safe Levels</div>
+            <p style="font-size:0.82rem; color:var(--ink-muted); margin-bottom:16px;">Cost to reduce each state's 2100 water stress below 40 (moderate). Sorted by investment needed.</p>
+            <div style="overflow-x:auto;">
+                <table class="data-table" id="stateInvestTable">
+                    <thead>
+                        <tr>
+                            <th style="text-align:left;">State</th>
+                            <th>Baseline Stress</th>
+                            <th>New Capacity Needed</th>
+                            <th>Est. Investment</th>
+                            <th style="text-align:left;">Primary Strategy</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stateInvestBody"></tbody>
+                    <tfoot>
+                        <tr style="border-top:2px solid var(--border); font-weight:700;">
+                            <td>Total (all 17 states)</td>
+                            <td></td>
+                            <td id="totalMAF"></td>
+                            <td id="totalCost"></td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+
         <div class="callout callout-teal">
             <strong>Key insight:</strong> Drag the slider to $50&ndash;60B and watch the map transform&thinsp;&mdash;&thinsp;that's enough to close today's 6 MAF/year deficit with drought-proof capacity. That's less than a single year of federal highway spending ($67B in 2024). Push past $75B and every Western state drops below moderate water stress, even under high-emissions scenarios. The technologies are proven&thinsp;&mdash;&thinsp;the price tag is known&thinsp;&mdash;&thinsp;what's missing is the political decision.
         </div>
@@ -1256,26 +1285,38 @@ new Chart(document.getElementById('techChart'), {
         { name: 'desal',   maxCapacity: 4.0, costPerMAF: 20.0, label: 'Desalination' },
     ];
 
-    // State data: baseline 2100 stress (no intervention) and sensitivity to new capacity
+    // State data: baseline 2100 stress, sensitivity, and per-state investment model
+    // costPerMAF: blended $/MAF based on available tech mix (coastal states have cheaper desal access)
+    // targetScore: score to reach "moderate or below" (< 40)
+    // primaryTech: dominant technology strategy for this state
     const STATES = [
-        { abbr:'AZ', name:'Arizona',      base:97, sensitivity:8.0 },
-        { abbr:'NV', name:'Nevada',        base:95, sensitivity:7.5 },
-        { abbr:'CA', name:'California',    base:90, sensitivity:6.5 },
-        { abbr:'NM', name:'New Mexico',    base:90, sensitivity:7.0 },
-        { abbr:'UT', name:'Utah',          base:88, sensitivity:7.5 },
-        { abbr:'CO', name:'Colorado',      base:82, sensitivity:6.0 },
-        { abbr:'KS', name:'Kansas',        base:78, sensitivity:5.5 },
-        { abbr:'TX', name:'Texas',         base:78, sensitivity:5.0 },
-        { abbr:'NE', name:'Nebraska',      base:68, sensitivity:5.0 },
-        { abbr:'OK', name:'Oklahoma',      base:65, sensitivity:4.5 },
-        { abbr:'WY', name:'Wyoming',       base:55, sensitivity:4.0 },
-        { abbr:'ID', name:'Idaho',         base:50, sensitivity:4.5 },
-        { abbr:'OR', name:'Oregon',        base:48, sensitivity:3.5 },
-        { abbr:'WA', name:'Washington',    base:45, sensitivity:3.0 },
-        { abbr:'MT', name:'Montana',       base:38, sensitivity:2.5 },
-        { abbr:'SD', name:'South Dakota',  base:35, sensitivity:3.0 },
-        { abbr:'ND', name:'North Dakota',  base:28, sensitivity:2.0 },
+        { abbr:'AZ', name:'Arizona',      base:97, sensitivity:8.0, costPerMAF:2.8, primaryTech:'MAR + Colorado compact reform + recycling' },
+        { abbr:'NV', name:'Nevada',        base:95, sensitivity:7.5, costPerMAF:4.2, primaryTech:'Recycling (Las Vegas 99%) + MAR + desal pipeline' },
+        { abbr:'CA', name:'California',    base:90, sensitivity:6.5, costPerMAF:3.5, primaryTech:'Coastal desal + recycling + MAR + stormwater' },
+        { abbr:'NM', name:'New Mexico',    base:90, sensitivity:7.0, costPerMAF:3.1, primaryTech:'MAR + brackish desal + ag conversion' },
+        { abbr:'UT', name:'Utah',          base:88, sensitivity:7.5, costPerMAF:2.5, primaryTech:'MAR + Great Salt Lake watershed + recycling' },
+        { abbr:'CO', name:'Colorado',      base:82, sensitivity:6.0, costPerMAF:3.8, primaryTech:'Compact reform + MAR + ag conversion + recycling' },
+        { abbr:'KS', name:'Kansas',        base:78, sensitivity:5.5, costPerMAF:2.2, primaryTech:'Ogallala MAR + ag conversion + conservation' },
+        { abbr:'TX', name:'Texas',         base:78, sensitivity:5.0, costPerMAF:4.5, primaryTech:'Brackish desal + recycling + coastal desal + MAR' },
+        { abbr:'NE', name:'Nebraska',      base:68, sensitivity:5.0, costPerMAF:1.8, primaryTech:'Ogallala MAR + ag conversion' },
+        { abbr:'OK', name:'Oklahoma',      base:65, sensitivity:4.5, costPerMAF:2.0, primaryTech:'MAR + stormwater capture + ag efficiency' },
+        { abbr:'WY', name:'Wyoming',       base:55, sensitivity:4.0, costPerMAF:1.5, primaryTech:'MAR + snowpack storage + conservation' },
+        { abbr:'ID', name:'Idaho',         base:50, sensitivity:4.5, costPerMAF:1.2, primaryTech:'ESPA MAR expansion + ag conversion' },
+        { abbr:'OR', name:'Oregon',        base:48, sensitivity:3.5, costPerMAF:2.0, primaryTech:'MAR + stormwater + recycling' },
+        { abbr:'WA', name:'Washington',    base:45, sensitivity:3.0, costPerMAF:2.2, primaryTech:'MAR + stormwater + recycling' },
+        { abbr:'MT', name:'Montana',       base:38, sensitivity:2.5, costPerMAF:1.0, primaryTech:'MAR + conservation' },
+        { abbr:'SD', name:'South Dakota',  base:35, sensitivity:3.0, costPerMAF:1.2, primaryTech:'MAR + Missouri River management' },
+        { abbr:'ND', name:'North Dakota',  base:28, sensitivity:2.0, costPerMAF:0.8, primaryTech:'MAR + conservation' },
     ];
+
+    // Calculate per-state investment needed to reach moderate stress (< 40)
+    function getStateInvestment(st) {
+        if (st.base <= 40) return { mafNeeded: 0, costB: 0 };
+        const reduction = st.base - 38;
+        const mafNeeded = reduction / st.sensitivity;
+        const costB = mafNeeded * st.costPerMAF;
+        return { mafNeeded, costB };
+    }
 
     function getStressColor(score) {
         if (score >= 80) return { bg: '#7f1d1d', text: '#fecaca' };
@@ -1311,13 +1352,16 @@ new Chart(document.getElementById('techChart'), {
     const tooltipDiv = document.createElement('div');
     tooltipDiv.id = 'mapTooltip';
     tooltipDiv.style.cssText = 'display:none; position:absolute; background:var(--white); border:1px solid var(--border); border-radius:4px; padding:10px 14px; box-shadow:0 4px 16px rgba(0,0,0,0.1); pointer-events:none; z-index:10; font-size:0.82rem; min-width:180px;';
-    tooltipDiv.innerHTML = '<div style="font-weight:700; margin-bottom:4px;" id="ttName"></div><div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:var(--ink-muted);">No investment:</span><span id="ttBase" style="font-weight:600;"></span></div><div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:var(--ink-muted);">With investment:</span><span id="ttNew" style="font-weight:600;"></span></div><div id="ttChange" style="margin-top:4px; font-size:0.75rem; font-weight:600;"></div>';
+    tooltipDiv.innerHTML = '<div style="font-weight:700; margin-bottom:6px; font-size:0.9rem;" id="ttName"></div><div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:var(--ink-muted);">No investment:</span><span id="ttBase" style="font-weight:600;"></span></div><div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:var(--ink-muted);">With investment:</span><span id="ttNew" style="font-weight:600;"></span></div><div id="ttChange" style="margin-top:4px; font-size:0.75rem; font-weight:600;"></div><div style="border-top:1px solid var(--border); margin-top:8px; padding-top:8px;"><div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:var(--ink-muted);">Investment to safe:</span><span id="ttCost" style="font-weight:700;"></span></div><div style="display:flex; justify-content:space-between; gap:16px;"><span style="color:var(--ink-muted);">New capacity needed:</span><span id="ttMAF" style="font-weight:600;"></span></div><div id="ttTech" style="margin-top:4px; font-size:0.72rem; color:var(--ink-muted); line-height:1.4;"></div></div>';
     mapContainer.appendChild(tooltipDiv);
 
     const ttName = document.getElementById('ttName');
     const ttBase = document.getElementById('ttBase');
     const ttNew = document.getElementById('ttNew');
     const ttChange = document.getElementById('ttChange');
+    const ttCost = document.getElementById('ttCost');
+    const ttMAF = document.getElementById('ttMAF');
+    const ttTech = document.getElementById('ttTech');
 
     // Load US Census TopoJSON and build the map
     d3.json('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json').then(function(us) {
@@ -1368,6 +1412,17 @@ new Chart(document.getElementById('techChart'), {
                 const diff = st.base - score;
                 if (diff > 0) { ttChange.textContent = '\u2193 ' + diff + ' point reduction'; ttChange.style.color = '#1A7A6D'; }
                 else { ttChange.textContent = 'No change (invest to reduce)'; ttChange.style.color = 'var(--ink-muted)'; }
+                const inv = getStateInvestment(st);
+                if (inv.costB > 0) {
+                    ttCost.textContent = '$' + inv.costB.toFixed(1) + 'B';
+                    ttCost.style.color = inv.costB > 15 ? '#C4501A' : inv.costB > 5 ? '#B45309' : '#1A7A6D';
+                    ttMAF.textContent = inv.mafNeeded.toFixed(1) + ' MAF/yr';
+                } else {
+                    ttCost.textContent = 'Already safe';
+                    ttCost.style.color = '#1A7A6D';
+                    ttMAF.textContent = '0 MAF/yr';
+                }
+                ttTech.textContent = st.primaryTech;
                 tooltipDiv.style.display = 'block';
             })
             .on('mousemove', function(event) {
@@ -1417,6 +1472,26 @@ new Chart(document.getElementById('techChart'), {
                 .attr('id', 'lbl-score-' + abbr)
                 .text(STATES.find(s => s.abbr === abbr).base);
         });
+
+        // Build state investment table
+        const tbody = document.getElementById('stateInvestBody');
+        const sorted = [...STATES].sort((a,b) => getStateInvestment(b).costB - getStateInvestment(a).costB);
+        let totalMAF = 0, totalCost = 0;
+        sorted.forEach(st => {
+            const inv = getStateInvestment(st);
+            totalMAF += inv.mafNeeded;
+            totalCost += inv.costB;
+            const tr = document.createElement('tr');
+            const stressCol = getStressColor(st.base);
+            tr.innerHTML = '<td style="text-align:left; font-weight:600;">' + st.name + '</td>'
+                + '<td><span style="display:inline-block; padding:2px 8px; border-radius:3px; font-size:0.78rem; font-weight:700; color:' + stressCol.text + '; background:' + stressCol.bg + ';">' + st.base + ' ' + getStressLabel(st.base) + '</span></td>'
+                + '<td>' + (inv.mafNeeded > 0 ? inv.mafNeeded.toFixed(1) + ' MAF/yr' : '\u2014') + '</td>'
+                + '<td style="font-weight:700; color:' + (inv.costB > 15 ? '#C4501A' : inv.costB > 5 ? '#B45309' : '#1A7A6D') + ';">' + (inv.costB > 0 ? '$' + inv.costB.toFixed(1) + 'B' : 'Already safe') + '</td>'
+                + '<td style="text-align:left; font-size:0.78rem; color:var(--ink-muted);">' + st.primaryTech + '</td>';
+            tbody.appendChild(tr);
+        });
+        document.getElementById('totalMAF').textContent = totalMAF.toFixed(1) + ' MAF/yr';
+        document.getElementById('totalCost').textContent = '$' + totalCost.toFixed(1) + 'B';
 
         // Initial color paint
         update(0);
